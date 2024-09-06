@@ -9,6 +9,7 @@ import {
 } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
+import Switch from "./Switch";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -36,6 +37,7 @@ const Navbar = () => {
               {currentUser && (
                 <h5 className="mr-2 capitalize">{currentUser.displayName}</h5>
               )}
+              <Switch />
 
               <Menu as="div" className="relative ml-3">
                 <div>
