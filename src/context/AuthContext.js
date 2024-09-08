@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -23,9 +24,13 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   const navigate = useNavigate();
-  const createUser = async (email, password) => {
+  const createUser = async (email, password, displayName) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(auth.currentUser, {
+        displayName: displayName,
+        // photoURL: "https://example.com/jane-q-user/profile.jpg",
+      });
       // console.log(userCredential);
       navigate("/");
       toastSuccessNotify("Registered successfully");

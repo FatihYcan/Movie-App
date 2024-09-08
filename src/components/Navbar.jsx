@@ -37,7 +37,7 @@ const Navbar = () => {
               {/* Profile dropdown */}
 
               {currentUser && (
-                <h5 className="mr-2 capitalize">{currentUser.displayName}</h5>
+                <h5 className="mr-2 capitalize">{currentUser?.displayName}</h5>
               )}
               <Switch />
 
