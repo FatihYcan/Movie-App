@@ -2,7 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -10,7 +12,6 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
-import { GoogleAuthProvider } from "firebase/auth/web-extension";
 
 const AuthContext = createContext();
 
@@ -74,7 +75,7 @@ const AuthContextProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         navigate("/");
         toastSuccessNotify("Logged in successfully");
       })
@@ -83,7 +84,24 @@ const AuthContextProvider = ({ children }) => {
       });
   };
 
-  const values = { createUser, loginUser, logOut, currentUser, signUpProvider };
+  const forgotPassword = (email) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        toastSuccessNotify("Please check your email");
+      })
+      .catch((error) => {
+        toastErrorNotify("missing email");
+      });
+  };
+
+  const values = {
+    createUser,
+    loginUser,
+    logOut,
+    currentUser,
+    signUpProvider,
+    forgotPassword,
+  };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
