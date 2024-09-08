@@ -10,14 +10,16 @@ import {
 import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png";
 import Switch from "./Switch";
+import { useAuthContext } from "../context/AuthContext";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Navbar = () => {
+  const { logOut, currentUser } = useAuthContext();
   // const currentUser = { displayName: "fatih" };
-  const currentUser = false;
+  // const currentUser = false;
 
   return (
     <>
@@ -103,6 +105,7 @@ const Navbar = () => {
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
+                            onClick={logOut}
                           >
                             Logout
                           </Link>

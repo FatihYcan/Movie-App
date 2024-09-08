@@ -1,8 +1,10 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -14,6 +16,12 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(false);
+
+  useEffect(() => {
+    userObserver();
+  }, []);
+
   const navigate = useNavigate();
   const createUser = async (email, password) => {
     try {
@@ -22,7 +30,7 @@ const AuthContextProvider = ({ children }) => {
       navigate("/");
       toastSuccessNotify("Registered successfully");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toastErrorNotify("Email-already in use");
     }
   };
@@ -31,11 +39,31 @@ const AuthContextProvider = ({ children }) => {
       await signInWithEmailAndPassword(auth, email, password);
       // console.log(userCredential);
       navigate("/");
+      toastSuccessNotify("Logged in successfully");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toastErrorNotify("Is invalid credential");
     }
   };
-  const values = { createUser, loginUser };
+
+  const userObserver = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { email, displayName, photoURL } = user;
+        setCurrentUser({ email, displayName, photoURL });
+        // console.log(user);
+      } else {
+        setCurrentUser(false);
+      }
+    });
+  };
+
+  const logOut = () => {
+    signOut(auth);
+    toastSuccessNotify("Logged out successfully");
+  };
+
+  const values = { createUser, loginUser, logOut, currentUser };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
