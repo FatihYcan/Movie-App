@@ -4,11 +4,13 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import { GoogleAuthProvider } from "firebase/auth/web-extension";
 
 const AuthContext = createContext();
 
@@ -68,7 +70,20 @@ const AuthContextProvider = ({ children }) => {
     toastSuccessNotify("Logged out successfully");
   };
 
-  const values = { createUser, loginUser, logOut, currentUser };
+  const signUpProvider = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+        toastSuccessNotify("Logged in successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const values = { createUser, loginUser, logOut, currentUser, signUpProvider };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
