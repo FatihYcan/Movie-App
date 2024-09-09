@@ -24,7 +24,7 @@
     @apply mt-[10vh] mx-auto overflow-hidden relative rounded-[8px] bg-gray-100 dark:bg-[#1c1c1c] before:content-[""] before:absolute before:w-[380px] before:h-[420px] before:top-[-50%] before:left-[-50%] after:content-[""] after:absolute after:w-[380px] after:h-[420px] after:top-[-50%] after:left-[-50%] custom-linear-gradient;
   }
   .form-container form {
-    @apply absolute inset-[2px] rounded-[8px] bg-gray-100 dark:bg-gray-dark-second z-[10] flex flex-col py-[50px] px-[40px];
+    @apply absolute inset-[2px] rounded-[8px] bg-gray-100 dark:bg-[#032541] z-[10] flex flex-col py-[30px] px-[40px];
   }
 }
 
@@ -39,25 +39,37 @@ body {
 
 /* MovieCard Custom CSS */
 .movie-card {
-  background-color: #080f36;
+  /* background-color: #080f36;
   border-radius: 3px;
   box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
   overflow: hidden;
   margin: 1rem;
   width: 300px;
   height: 510px;
+  width: 235px;
+  height: 340px;
+  position: relative;
+  cursor: pointer; */
   position: relative;
   cursor: pointer;
+  box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
+  overflow: hidden;
+  background-color: #080f36;
+  height: 350px;
+}
+
+.movie-img {
+  height: 270px;
 }
 
 .movie {
   position: relative;
 }
 
-.movie .movie img {
-  object-fit: cover;
-  height: 450px;
-  max-width: 100%;
+.movie img {
+  /* object-fit: cover; */
+  height: 275px;
+  width: 100%;
 }
 
 .movie-over {
@@ -81,12 +93,22 @@ body {
   transform: translateX(0%);
 }
 
+.movie-footer {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
 .tag {
   border-radius: 5px;
   padding: 0.7rem;
   font-weight: bold;
-  width: 3rem;
   text-align: center;
+  position: absolute;
 }
 
 .tag.green {

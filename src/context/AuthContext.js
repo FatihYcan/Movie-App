@@ -20,7 +20,7 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState(true);
 
   useEffect(() => {
     userObserver();
@@ -34,7 +34,9 @@ const AuthContextProvider = ({ children }) => {
         displayName: displayName,
         // photoURL: "https://example.com/jane-q-user/profile.jpg",
       });
-      // console.log(userCredential);
+
+      // console.log(auth);
+      userObserver(auth.currentUser);
       navigate("/");
       toastSuccessNotify("Registered successfully");
     } catch (error) {
@@ -59,7 +61,6 @@ const AuthContextProvider = ({ children }) => {
       if (user) {
         const { email, displayName, photoURL } = user;
         setCurrentUser({ email, displayName, photoURL });
-        // console.log(user);
       } else {
         setCurrentUser(false);
       }

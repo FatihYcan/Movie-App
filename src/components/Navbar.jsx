@@ -25,11 +25,11 @@ const Navbar = () => {
     <>
       <Disclosure
         as="nav"
-        className="bg-neutral-100 dark:bg-gray-900 py-3 dark:text-white fixed w-full z-20 top-0"
+        className="bg-neutral-100 dark:bg-[#032541] py-3 dark:text-white fixed w-full z-20 top-0"
       >
         <div className="mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between">
-            <Link className="pr-2 text-2xl font-semibold" to="/">
+            <Link className="pr-2 md:text-2xl font-semibold" to="/">
               Movie App
             </Link>
 
@@ -101,6 +101,7 @@ const Navbar = () => {
                       <MenuItem>
                         {({ active }) => (
                           <Link
+                            to="/"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
