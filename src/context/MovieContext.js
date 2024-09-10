@@ -22,7 +22,9 @@ const MovieContextProvider = ({ children }) => {
     setLoading(true);
     axios
       .get(url)
-      .then((res) => setMovies(res.data.results))
+      .then((res) => {
+        setMovies(res.data.results.slice(0, 12));
+      })
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   };

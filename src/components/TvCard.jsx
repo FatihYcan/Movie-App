@@ -6,7 +6,9 @@ const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
-const MovieCard = ({ movies }) => {
+const TvCard = ({ movies, tv }) => {
+  console.log(tv);
+
   const navigate = useNavigate();
   const { currentUser } = useAuthContext();
   const getVoteClass = (vote) => {
@@ -19,25 +21,22 @@ const MovieCard = ({ movies }) => {
     }
   };
 
-  console.log(movies);
-
   return (
     <>
-    
-      {movies.map((movie) => {
-        const { title, poster_path, overview, vote_average, id } = movie;
+      {tv.map((tv) => {
+        const { name, poster_path, overview, vote_average, id } = tv;
 
         return (
           <Col key={id}>
             <Card
-              onClick={() => navigate("/movie/" + id)}
+              onClick={() => navigate("/tv/" + id)}
               className="movie-card"
             >
               <div className="movie">
                 <Card.Img
                   variant="top"
                   src={poster_path ? IMG_API + poster_path : defaultImage}
-                  alt={title}
+                  alt={name}
                   className="movie-img"
                 />
                 <Card.Text className="movie-over">
@@ -47,7 +46,7 @@ const MovieCard = ({ movies }) => {
 
               <Card.Body>
                 <Card.Title>
-                  <h5 className="text-white line-clamp-2">{title}</h5>
+                  <h5 className="text-white line-clamp-2">{name}</h5>
                 </Card.Title>
               </Card.Body>
               <p className={`tag ${getVoteClass(vote_average)}`}>
@@ -94,4 +93,4 @@ const MovieCard = ({ movies }) => {
   );
 };
 
-export default MovieCard;
+export default TvCard;

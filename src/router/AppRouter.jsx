@@ -3,6 +3,7 @@ import Main from "../pages/Main";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import MovieDetail from "../pages/MovieDetail";
+import TvDetail from "../pages/TvDetail";
 import Navbar from "../components/Navbar";
 import PrivateRouter from "./PrivateRouter";
 
@@ -16,7 +17,8 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
 
         <Route path="" element={<PrivateRouter />}>
-          <Route path="/details/:id" element={<MovieDetail />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/tv/:id" element={<TvDetail />} />
         </Route>
       </Routes>
     </>

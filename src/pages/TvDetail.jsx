@@ -6,40 +6,38 @@ import { Card, Container } from "react-bootstrap";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [movieDetail, setMovieDetail] = useState("");
+  const [TvDetail, setTvDetail] = useState("");
   const [videoKey, setVideoKey] = useState();
-  
+
+  console.log(TvDetail);
 
   const {
-    
-    title,
+    name,
     poster_path,
     overview,
     vote_average,
-    release_date,
+    first_air_date,
     vote_count,
     popularity,
-  } = movieDetail;
+  } = TvDetail;
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const movieDetailBaseUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
+  const tvDetailBaseUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`;
   const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
   const defaultImage =
     "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
-  const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
+  const videoUrl = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${API_KEY}`;
 
   useEffect(() => {
     axios
-      .get(movieDetailBaseUrl)
-      .then((res) => setMovieDetail(res.data))
+      .get(tvDetailBaseUrl)
+      .then((res) => setTvDetail(res.data))
       .catch((err) => console.log(err));
     axios
       .get(videoUrl)
       .then((res) => setVideoKey(res.data.results[0].key))
       .catch((err) => console.log(err));
-  }, [movieDetailBaseUrl, videoUrl]);
-
-  
+  }, [tvDetailBaseUrl, videoUrl]);
 
   return (
     <Container className="py-5">
@@ -47,14 +45,13 @@ const MovieDetail = () => {
         <Card.Img
           variant="top"
           src={poster_path ? baseImageUrl + poster_path : defaultImage}
-          alt={title}
+          alt={name}
           className="md:w-1/3"
         />
         <div className="p-6 flex flex-col justify-between md:w-2/3">
-          {videoKey && <VideoSection videoKey={videoKey} />}
           <div>
             <h1 className="text-gray-900 dark:text-gray-50 xs:text-xl md:text-2xl font-medium mb-2">
-              {title}
+              {name}
             </h1>
             <p className="text-gray-700 dark:text-gray-300 text-base mb-4">
               {overview}
@@ -62,7 +59,7 @@ const MovieDetail = () => {
           </div>
           <ul className="rounded-lg border border-gray-400 text-gray-900 dark:text-gray-300  ">
             <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg">
-              {"Release Date : " + release_date}
+              {"Release Date : " + first_air_date}
             </li>
             <li className="px-6 py-2 border-b border-gray-400 w-full">
               {"Rate : " + vote_average}
