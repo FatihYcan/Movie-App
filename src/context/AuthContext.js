@@ -32,26 +32,21 @@ const AuthContextProvider = ({ children }) => {
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, {
         displayName: displayName,
-        // photoURL: "https://example.com/jane-q-user/profile.jpg",
       });
-
-      // console.log(auth);
       userObserver(auth.currentUser);
       navigate("/");
       toastSuccessNotify("Registered successfully");
     } catch (error) {
-      // console.log(error);
       toastErrorNotify("Email-already in use");
     }
   };
+
   const loginUser = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // console.log(userCredential);
       navigate("/");
       toastSuccessNotify("Logged in successfully");
     } catch (error) {
-      // console.log(error);
       toastErrorNotify("Is invalid credential");
     }
   };
@@ -76,7 +71,6 @@ const AuthContextProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        // console.log(result);
         navigate("/");
         toastSuccessNotify("Logged in successfully");
       })

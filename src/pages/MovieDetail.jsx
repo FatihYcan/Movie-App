@@ -8,10 +8,8 @@ const MovieDetail = () => {
   const { id } = useParams();
   const [movieDetail, setMovieDetail] = useState("");
   const [videoKey, setVideoKey] = useState();
-  
 
   const {
-    
     title,
     poster_path,
     overview,
@@ -38,8 +36,6 @@ const MovieDetail = () => {
       .then((res) => setVideoKey(res.data.results[0].key))
       .catch((err) => console.log(err));
   }, [movieDetailBaseUrl, videoUrl]);
-
-  
 
   return (
     <Container className="py-5">

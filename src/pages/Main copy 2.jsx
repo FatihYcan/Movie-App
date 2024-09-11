@@ -5,42 +5,47 @@ import { Container, Row } from "react-bootstrap";
 import { useTvContext } from "../context/TvContext";
 import TvCard from "../components/TvCard";
 import { useNavigate } from "react-router-dom";
-import { toastWarnNotify } from "../helper/ToastNotify";
 
 const Main = () => {
   const { movies, loading, getMovies } = useMovieContext();
   const { tv, getTv } = useTvContext();
+
   const navigate = useNavigate();
+
   const inputRef = useRef();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const MOVIE_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_count.desc`;
-  const TV_API = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&sort_by=vote_count.desc`;
   const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
   const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=`;
+  const MOVIE_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+  const TV_API = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const movieSearch = inputRef.current.value;
-    sessionStorage.setItem("moviesearch", movieSearch);
-    const tvSearch = inputRef.current.value;
-    sessionStorage.setItem("tvsearch", tvSearch);
-    if (movieSearch && tvSearch) {
-      navigate(`/search?query=${encodeURIComponent(inputRef.current.value)}`);
-      getMovies(SEARCH_MOVIE_API + movieSearch);
-      getTv(SEARCH_TV_API + tvSearch);
-    } else {
-      toastWarnNotify("Please enter a text");
-    }
+    navigate("/search");
+
+    // const movieSearch = inputRef.current.value;
+    // sessionStorage.setItem("moviesearch", movieSearch);
+    // const tvSearch = inputRef.current.value;
+    // sessionStorage.setItem("tvsearch", tvSearch);
+    // if (movieSearch && tvSearch) {
+    //   getMovies(SEARCH_MOVIE_API + movieSearch);
+    //   getTv(SEARCH_TV_API + tvSearch);
+    // } else {
+    //   getMovies(MOVIE_API);
+    //   getTv(TV_API);
+    // }
   };
 
   useEffect(() => {
-    getMovies(MOVIE_API);
-    getTv(TV_API);
+    const savedSearch =
+      sessionStorage.getItem("moviesearch") ||
+      sessionStorage.getItem("tvsearch") ||
+      "";
+    if (inputRef.current) {
+      inputRef.current.value = savedSearch;
+    }
   }, []);
-
-  console.log(movies);
-  console.log(tv);
 
   return (
     <Container className="p-1">

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import { Button, Card, CardGroup, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
@@ -8,7 +7,7 @@ const defaultImage =
 
 const MovieCard = ({ movies }) => {
   const navigate = useNavigate();
-  const { currentUser } = useAuthContext();
+
   const getVoteClass = (vote) => {
     if (vote >= 8) {
       return "green";
@@ -19,11 +18,8 @@ const MovieCard = ({ movies }) => {
     }
   };
 
-  console.log(movies);
-
   return (
     <>
-    
       {movies.map((movie) => {
         const { title, poster_path, overview, vote_average, id } = movie;
 

@@ -9,8 +9,6 @@ const MovieDetail = () => {
   const [TvDetail, setTvDetail] = useState("");
   const [videoKey, setVideoKey] = useState();
 
-  console.log(TvDetail);
-
   const {
     name,
     poster_path,
@@ -35,7 +33,11 @@ const MovieDetail = () => {
       .catch((err) => console.log(err));
     axios
       .get(videoUrl)
-      .then((res) => setVideoKey(res.data.results[0].key))
+      .then((res) => {
+        if (res.data.results.length > 0) {
+          setVideoKey(res.data.results[0].key);
+        }
+      })
       .catch((err) => console.log(err));
   }, [tvDetailBaseUrl, videoUrl]);
 
@@ -49,6 +51,7 @@ const MovieDetail = () => {
           className="md:w-1/3"
         />
         <div className="p-6 flex flex-col justify-between md:w-2/3">
+          {videoKey && <VideoSection videoKey={videoKey} />}
           <div>
             <h1 className="text-gray-900 dark:text-gray-50 xs:text-xl md:text-2xl font-medium mb-2">
               {name}

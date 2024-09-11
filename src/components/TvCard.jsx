@@ -1,16 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
-import { Button, Card, CardGroup, Col } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
-const TvCard = ({ movies, tv }) => {
-  console.log(tv);
-
+const TvCard = ({ tv }) => {
   const navigate = useNavigate();
-  const { currentUser } = useAuthContext();
   const getVoteClass = (vote) => {
     if (vote >= 8) {
       return "green";
@@ -28,10 +24,7 @@ const TvCard = ({ movies, tv }) => {
 
         return (
           <Col key={id}>
-            <Card
-              onClick={() => navigate("/tv/" + id)}
-              className="movie-card"
-            >
+            <Card onClick={() => navigate("/tv/" + id)} className="movie-card">
               <div className="movie">
                 <Card.Img
                   variant="top"
