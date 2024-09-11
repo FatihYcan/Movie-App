@@ -48,13 +48,13 @@ const Navbar = () => {
                       Now Playing
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/movie">Popular</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/movie/top-rated">
                       Top Rated
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/movie/upcoming">
                       Upcoming
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/movie/trending">
                       Trending
                     </NavDropdown.Item>
                   </NavDropdown>
@@ -193,13 +193,17 @@ const Navbar = () => {
               <NavDropdown.Item href="/movie/now-playing">
                 Now Playing
               </NavDropdown.Item>
-              <NavDropdown.Item href="/movie">Popüler</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Gösterimde</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                En Çok Oy Alan
+              <NavDropdown.Item href="/movie">Popular</NavDropdown.Item>
+              <NavDropdown.Item href="/movie/top-rated">
+                Top Rated
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Trend</NavDropdown.Item>
+              <NavDropdown.Item href="/movie/upcoming">
+                Upcoming
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/movie/trending">Trending</NavDropdown.Item>
             </NavDropdown>
+
+
             <NavDropdown title="Diziler" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.2">Popüler</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Yakında</NavDropdown.Item>

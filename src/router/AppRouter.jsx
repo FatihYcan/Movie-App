@@ -9,6 +9,11 @@ import PrivateRouter from "./PrivateRouter";
 import Search from "../pages/Search";
 import PopularMovie from "../pages/PopularMovie";
 import NowPlaying from "../pages/NowPlaying";
+import TopRatedMovie from "../pages/TopRatedMovie";
+import Upcoming from "../pages/Upcoming";
+import TrendingMovie from "../pages/TrendingMovie";
+// import TodayMovie from "../pages/TodayMovie";
+// import WeekMovie from "../pages/WeekMovie";
 
 const AppRouter = () => {
   return (
@@ -24,6 +29,13 @@ const AppRouter = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/movie" element={<PopularMovie />} />
           <Route path="/movie/now-playing" element={<NowPlaying />} />
+          <Route path="/movie/top-rated" element={<TopRatedMovie />} />
+          <Route path="/movie/upcoming" element={<Upcoming />} />
+
+          <Route path="/movie/trending" element={<TrendingMovie />} />
+            {/* <Route index path="" element={<TodayMovie />} /> */}
+            {/* <Route path="this-week" element={<WeekMovie />} /> */}
+          {/* </Route> */}
         </Route>
       </Routes>
     </>

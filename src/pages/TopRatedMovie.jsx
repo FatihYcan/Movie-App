@@ -10,7 +10,7 @@ const PopularMovie = () => {
     useMovieContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const MOVIE_API = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${page}`;
+  const MOVIE_API = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${page}`;
 
   useEffect(() => {
     getMovies(MOVIE_API, 20);
@@ -33,7 +33,7 @@ const PopularMovie = () => {
         <>
           <>
             <h1 className="md:text-2xl font-semibold dark:text-white px-2 my-2">
-              Now Playing Movies
+              Top Rated Movies
             </h1>
             <Row
               xs={2}
