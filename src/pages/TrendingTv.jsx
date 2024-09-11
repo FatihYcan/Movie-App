@@ -1,24 +1,23 @@
 import { Button, Container, Row } from "react-bootstrap";
-import { useMovieContext } from "../context/MovieContext";
 import { useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Outlet } from "react-router-dom";
+import TvCard from "../components/TvCard";
+import { useTvContext } from "../context/TvContext";
 
-const TrendingMovie = () => {
-  const { movies, loading, getMovies, page, setPage, totalPages } =
-    useMovieContext();
+const TrendingTv = () => {
+  const { tv, loading, getTv, page, setPage, totalPages } = useTvContext();
 
   const [dayActive, setDayActive] = useState(true);
   const [weekActive, setWeekActive] = useState(false);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const DAY_API = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${page}`;
-  const WEEK_API = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`;
+  const DAY_API = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&page=${page}`;
+  const WEEK_API = `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}&page=${page}`;
 
   useEffect(() => {
-    getMovies(DAY_API, 20);
+    getTv(DAY_API, 20);
   }, [page]);
 
   const handlePage = (event, value) => {
@@ -28,14 +27,14 @@ const TrendingMovie = () => {
   const handleWeekClick = () => {
     setWeekActive(true);
     setDayActive(false);
-    getMovies(WEEK_API, 20);
+    getTv(WEEK_API, 20);
     setPage(1);
   };
 
   const handleDayClick = () => {
     setWeekActive(false);
     setDayActive(true);
-    getMovies(DAY_API, 20);
+    getTv(DAY_API, 20);
     setPage(1);
   };
 
@@ -53,17 +52,17 @@ const TrendingMovie = () => {
           <>
             <div className="flex px-2 my-2 items-center">
               <h1 className="md:text-2xl font-semibold dark:text-white mr-2">
-                Trending Movies
+                Trending Tv Shows
               </h1>
 
-              <div className=" rounded-full border-solid border-2 border-black ">
+              <div className="rounded-full border-solid border-2 border-black dark:bg-[#004366]">
                 <Button
+                  variant="link"
                   size="sm"
-                  variant="outline-primary"
                   className={
                     dayActive
-                      ? "rounded-full px-3 bg-black text-white border-none"
-                      : "border-none text-black hover:bg-white px-3 rounded-full bg-white"
+                      ? "rounded-full px-3 bg-black text-white text-decoration-none font-semibold"
+                      : "text-decoration-none text-black px-3 rounded-full font-semibold dark:text-white"
                   }
                   onClick={handleDayClick}
                 >
@@ -71,12 +70,12 @@ const TrendingMovie = () => {
                 </Button>
 
                 <Button
+                  variant="link"
                   size="sm"
-                  variant="outline-primary"
                   className={
                     weekActive
-                      ? "rounded-full px-3 bg-black text-white border-none"
-                      : "border-none text-black hover:bg-white px-3 rounded-full bg-white"
+                      ? "rounded-full px-3 bg-black text-white text-decoration-none font-semibold"
+                      : "text-decoration-none text-black px-3 rounded-full font-semibold dark:text-white"
                   }
                   onClick={handleWeekClick}
                 >
@@ -91,7 +90,7 @@ const TrendingMovie = () => {
               lg={5}
               className="g-4 mb-4 justify-content-center"
             >
-              <MovieCard movies={movies} />
+              <TvCard tv={tv} />
             </Row>
             <div className="mb-3 flex justify-center">
               <Stack>
@@ -111,4 +110,4 @@ const TrendingMovie = () => {
   );
 };
 
-export default TrendingMovie;
+export default TrendingTv;

@@ -1,19 +1,18 @@
 import { Container, Row } from "react-bootstrap";
-import { useMovieContext } from "../context/MovieContext";
 import { useEffect } from "react";
-import MovieCard from "../components/MovieCard";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { useTvContext } from "../context/TvContext";
+import TvCard from "../components/TvCard";
 
-const NowPlaying = () => {
-  const { movies, loading, getMovies, page, setPage, totalPages } =
-    useMovieContext();
+const AiringToday = () => {
+  const { tv, loading, getTv, page, setPage, totalPages } = useTvContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const MOVIE_API = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&page=${page}`;
+  const TV_API = `https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&page=${page}`;
 
   useEffect(() => {
-    getMovies(MOVIE_API, 20);
+    getTv(TV_API, 20);
   }, [page]);
 
   const handlePage = (event, value) => {
@@ -33,7 +32,7 @@ const NowPlaying = () => {
         <>
           <>
             <h1 className="md:text-2xl font-semibold dark:text-white px-2 my-2">
-              Now Playing Movies
+            Airing Today Tv Shows
             </h1>
             <Row
               xs={2}
@@ -42,7 +41,7 @@ const NowPlaying = () => {
               lg={5}
               className="g-4 mb-4 justify-content-center"
             >
-              <MovieCard movies={movies} />
+              <TvCard tv={tv} />
             </Row>
             <div className="mb-3 flex justify-center">
               <Stack>
@@ -61,4 +60,4 @@ const NowPlaying = () => {
   );
 };
 
-export default NowPlaying;
+export default AiringToday;

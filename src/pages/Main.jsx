@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
 const Main = () => {
-  const { movies, loading, getMovies } = useMovieContext();
+  const { movies, loading, getMovies, page } = useMovieContext();
   const { tv, getTv } = useTvContext();
   const navigate = useNavigate();
   const inputRef = useRef();
@@ -16,8 +16,8 @@ const Main = () => {
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const MOVIE_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_count.desc`;
   const TV_API = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&sort_by=vote_count.desc`;
-  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
-  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=`;
+  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${inputRef}&page=${page}`;
+  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${inputRef}&page=${page}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,8 +27,8 @@ const Main = () => {
     sessionStorage.setItem("tvsearch", tvSearch);
     if (movieSearch && tvSearch) {
       navigate(`/search?query=${encodeURIComponent(inputRef.current.value)}`);
-      getMovies(SEARCH_MOVIE_API + movieSearch);
-      getTv(SEARCH_TV_API + tvSearch);
+      getMovies(SEARCH_MOVIE_API, 20);
+      getTv(SEARCH_TV_API, 20);
     } else {
       toastWarnNotify("Please enter a text");
     }

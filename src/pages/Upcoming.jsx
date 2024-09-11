@@ -5,7 +5,7 @@ import MovieCard from "../components/MovieCard";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
-const PopularMovie = () => {
+const Upcoming = () => {
   const { movies, loading, getMovies, page, setPage, totalPages } =
     useMovieContext();
 
@@ -61,4 +61,4 @@ const PopularMovie = () => {
   );
 };
 
-export default PopularMovie;
+export default Upcoming;

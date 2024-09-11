@@ -12,8 +12,11 @@ import NowPlaying from "../pages/NowPlaying";
 import TopRatedMovie from "../pages/TopRatedMovie";
 import Upcoming from "../pages/Upcoming";
 import TrendingMovie from "../pages/TrendingMovie";
-// import TodayMovie from "../pages/TodayMovie";
-// import WeekMovie from "../pages/WeekMovie";
+import AiringToday from "../pages/AiringToday";
+import OnTheAir from "../pages/OnTheAir";
+import PopularTv from "../pages/PopularTv";
+import TopRatedTv from "../pages/TopRatedTv";
+import TrendingTv from "../pages/TrendingTv";
 
 const AppRouter = () => {
   return (
@@ -26,17 +29,18 @@ const AppRouter = () => {
         <Route path="" element={<PrivateRouter />}>
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/tv/:id" element={<TvDetail />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/movie" element={<PopularMovie />} />
-          <Route path="/movie/now-playing" element={<NowPlaying />} />
-          <Route path="/movie/top-rated" element={<TopRatedMovie />} />
-          <Route path="/movie/upcoming" element={<Upcoming />} />
-
-          <Route path="/movie/trending" element={<TrendingMovie />} />
-            {/* <Route index path="" element={<TodayMovie />} /> */}
-            {/* <Route path="this-week" element={<WeekMovie />} /> */}
-          {/* </Route> */}
         </Route>
+        <Route path="/search" element={<Search />} />
+        <Route path="/movie" element={<PopularMovie />} />
+        <Route path="/movie/now-playing" element={<NowPlaying />} />
+        <Route path="/movie/top-rated" element={<TopRatedMovie />} />
+        <Route path="/movie/upcoming" element={<Upcoming />} />
+        <Route path="/movie/trending" element={<TrendingMovie />} />
+        <Route path="/tv/airing-today" element={<AiringToday />} />
+        <Route path="/tv/on-the-air" element={<OnTheAir />} />
+        <Route path="/tv" element={<PopularTv />} />
+        <Route path="/tv/top-rated" element={<TopRatedTv />} />
+        <Route path="/tv/trending" element={<TrendingTv />} />
       </Routes>
     </>
   );

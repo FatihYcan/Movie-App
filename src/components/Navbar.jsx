@@ -58,20 +58,21 @@ const Navbar = () => {
                       Trending
                     </NavDropdown.Item>
                   </NavDropdown>
+
                   <NavDropdown title="Tv Shows" id="collapsible-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item href="/tv/airing-today">
                       Airing Today
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item href="/tv/on-the-air">
                       On The Air
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/tv">
                       Popular
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/tv/top-rated">
                       Top Rated
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
+                    <NavDropdown.Item href="/tv/trending">
                       Trending
                     </NavDropdown.Item>
                   </NavDropdown>
@@ -200,18 +201,21 @@ const Navbar = () => {
               <NavDropdown.Item href="/movie/upcoming">
                 Upcoming
               </NavDropdown.Item>
-              <NavDropdown.Item href="/movie/trending">Trending</NavDropdown.Item>
+              <NavDropdown.Item href="/movie/trending">
+                Trending
+              </NavDropdown.Item>
             </NavDropdown>
 
-
-            <NavDropdown title="Diziler" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.2">Popüler</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Yakında</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Gösterimde</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                En Çok Oy Alan
+            <NavDropdown title="Tv Shows" id="collapsible-nav-dropdown">
+              <NavDropdown.Item href="/tv/airing-today">
+                Airing Today
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Trend</NavDropdown.Item>
+              <NavDropdown.Item href="/tv/on-the-air">On The Air</NavDropdown.Item>
+              <NavDropdown.Item href="/tv">Popular</NavDropdown.Item>
+              <NavDropdown.Item href="/tv/top-rated">
+                Top Rated
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/tv/trending">Trending</NavDropdown.Item>
             </NavDropdown>
           </div>
           <div className="border-t border-gray-700 pb-3 pt-4">
