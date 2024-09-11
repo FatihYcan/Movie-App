@@ -6,7 +6,7 @@ import { useTvContext } from "../context/TvContext";
 import TvCard from "../components/TvCard";
 
 const TopRatedTv = () => {
-  const { tv, loading, getTv, page, setPage, totalPages } = useTvContext();
+  const { tv, loading, getTv, page, setPage, tvPages } = useTvContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const TV_API = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&page=${page}`;
@@ -46,7 +46,7 @@ const TopRatedTv = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={totalPages}
+                  count={tvPages}
                   page={page}
                   onChange={handlePage}
                   color="success"

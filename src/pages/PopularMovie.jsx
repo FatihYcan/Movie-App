@@ -6,7 +6,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 const PopularMovie = () => {
-  const { movies, loading, getMovies, page, setPage, totalPages } =
+  const { movies, loading, getMovies, page, setPage, moviePages } =
     useMovieContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
@@ -47,7 +47,7 @@ const PopularMovie = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={totalPages}
+                  count={moviePages}
                   page={page}
                   onChange={handlePage}
                   color="success"

@@ -7,7 +7,7 @@ import TvCard from "../components/TvCard";
 import { useTvContext } from "../context/TvContext";
 
 const TrendingTv = () => {
-  const { tv, loading, getTv, page, setPage, totalPages } = useTvContext();
+  const { tv, loading, getTv, page, setPage, tvPages } = useTvContext();
 
   const [dayActive, setDayActive] = useState(true);
   const [weekActive, setWeekActive] = useState(false);
@@ -95,7 +95,7 @@ const TrendingTv = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={totalPages}
+                  count={tvPages}
                   page={page}
                   onChange={handlePage}
                   color="success"

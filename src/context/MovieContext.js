@@ -11,7 +11,6 @@ const MovieContextProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [moviePages, setMoviePages] = useState(1);
   const [movieResults, setMovieResults] = useState(1);
 
@@ -21,7 +20,6 @@ const MovieContextProvider = ({ children }) => {
       .get(url)
       .then((res) => {
         setMovies(res.data.results.slice(0, limit, page));
-        setTotalPages(res.data.total_pages);
         setMoviePages(res.data.total_pages);
         setMovieResults(res.data.total_results);
       })
@@ -36,7 +34,6 @@ const MovieContextProvider = ({ children }) => {
         getMovies,
         page,
         setPage,
-        totalPages,
         moviePages,
         setMoviePages,
         movieResults,

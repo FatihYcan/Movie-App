@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import { Outlet } from "react-router-dom";
 
 const TrendingMovie = () => {
-  const { movies, loading, getMovies, page, setPage, totalPages } =
+  const { movies, loading, getMovies, page, setPage, moviePages } =
     useMovieContext();
 
   const [dayActive, setDayActive] = useState(true);
@@ -96,7 +96,7 @@ const TrendingMovie = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={totalPages}
+                  count={moviePages}
                   page={page}
                   onChange={handlePage}
                   color="success"

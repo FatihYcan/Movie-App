@@ -11,7 +11,6 @@ const TvContextProvider = ({ children }) => {
   const [tv, setTv] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [tvPages, setTvPages] = useState(1);
   const [tvResults, setTvResults] = useState(0);
 
@@ -21,7 +20,6 @@ const TvContextProvider = ({ children }) => {
       .get(url)
       .then((res) => {
         setTv(res.data.results.slice(0, limit, page));
-        setTotalPages(res.data.total_pages);
         setTvPages(res.data.total_pages);
         setTvResults(res.data.total_results);
       })
@@ -30,7 +28,17 @@ const TvContextProvider = ({ children }) => {
   };
   return (
     <TvContext.Provider
-      value={{ tv, loading, getTv, page, setPage, totalPages,tvPages, setTvPages,tvResults, setTvResults }}
+      value={{
+        tv,
+        loading,
+        getTv,
+        page,
+        setPage,
+        tvPages,
+        setTvPages,
+        tvResults,
+        setTvResults,
+      }}
     >
       {children}
     </TvContext.Provider>

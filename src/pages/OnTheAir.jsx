@@ -7,7 +7,7 @@ import { useTvContext } from "../context/TvContext";
 import TvCard from "../components/TvCard";
 
 const OnTheAir = () => {
-  const { tv, loading, getTv, page, setPage, totalPages } = useTvContext();
+  const { tv, loading, getTv, page, setPage, tvPages } = useTvContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const TV_API = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${API_KEY}&page=${page}`;
@@ -47,7 +47,7 @@ const OnTheAir = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={totalPages}
+                  count={tvPages}
                   page={page}
                   onChange={handlePage}
                   color="success"

@@ -12,18 +12,9 @@ const Search = () => {
   const [query, setQuery] = useState(initialQuery);
   const navigate = useNavigate();
 
-  const {
-    movies,
-    loading,
-    getMovies,
-    page,
-    moviePages,
-    setMoviePages,
-    movieResults,
-    setMovieResults,
-  } = useMovieContext();
-  const { tv, getTv, tvPages, setTvPages, tvResults, setTvResults } =
-    useTvContext();
+  const { movies, loading, getMovies, page, moviePages, movieResults } =
+    useMovieContext();
+  const { tv, getTv, tvPages, tvResults } = useTvContext();
 
   const [movieActive, setMovieActive] = useState(true);
   const [tvActive, setTvActive] = useState(false);
@@ -53,7 +44,28 @@ const Search = () => {
     }
   }, []);
 
-  // console.log("movies", movies);
+  const handleMoiveClick = () => {
+    setMovieActive(true);
+    setTvActive(false);
+    window.history.pushState(
+      null,
+      "",
+      `/search/movie?query=${encodeURIComponent(query)}`
+    );
+    getMovies(SEARCH_MOVIE_API, 20);
+  };
+
+  const handleTvClick = () => {
+    setMovieActive(false);
+    setTvActive(true);
+    window.history.pushState(
+      null,
+      "",
+      `/search/tv?query=${encodeURIComponent(query)}`
+    );
+    getTv(SEARCH_TV_API, 20);
+  };
+
   // console.log("tv", tv);
   // console.log("movie pages", moviePages);
   // console.log("tvPages", tvPages);
@@ -73,22 +85,25 @@ const Search = () => {
           Search
         </button>
       </form>
-      <div className=" rounded-2xl border-solid border-2 border-black flex w-2/4 m-auto justify-between">
-        <div className="flex w-1/2 justify-center gap-3 font-semibold text-xl py-2 ">
-          <button
-          // className={
-          //   weekActive
-          //     ? "rounded-full px-3 bg-black text-white text-decoration-none font-semibold"
-          //     : "text-decoration-none text-black px-3 rounded-full font-semibold dark:text-white"
-          // }
-          // onClick={handleWeekClick}
-          >
-            Movies
-          </button>
+      <div className=" rounded-2xl border-solid border-2 border-black flex w-11/12 md:w-2/4 m-auto justify-between">
+        <div
+          className={
+            movieActive
+              ? " flex w-1/2 justify-center items-center gap-3 font-semibold md:text-xl py-2 bg-black text-white rounded-xl"
+              : "text-black px-3 rounded-full font-semibold dark:text-white flex w-1/2 justify-center items-center gap-3"
+          }
+        >
+          <button onClick={handleMoiveClick}>Movies</button>
           <span>{movieResults}</span>
         </div>
-        <div className="flex w-1/2 justify-center gap-3 font-semibold text-xl py-2 cursor-pointer">
-          <p>Tv Shows</p>
+        <div
+          className={
+            tvActive
+              ? " flex w-1/2 justify-center items-center gap-3 font-semibold md:text-xl py-2 bg-black text-white rounded-xl"
+              : "text-black px-3 rounded-full font-semibold dark:text-white flex w-1/2 justify-center items-center gap-3"
+          }
+        >
+          <button onClick={handleTvClick}>Tv Shows</button>
           <span>{tvResults}</span>
         </div>
       </div>
