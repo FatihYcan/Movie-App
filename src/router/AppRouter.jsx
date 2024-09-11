@@ -7,6 +7,8 @@ import TvDetail from "../pages/TvDetail";
 import Navbar from "../components/Navbar";
 import PrivateRouter from "./PrivateRouter";
 import Search from "../pages/Search";
+import PopularMovie from "../pages/PopularMovie";
+import NowPlaying from "../pages/NowPlaying";
 
 const AppRouter = () => {
   return (
@@ -20,6 +22,8 @@ const AppRouter = () => {
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/tv/:id" element={<TvDetail />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/movie" element={<PopularMovie />} />
+          <Route path="/movie/now-playing" element={<NowPlaying />} />
         </Route>
       </Routes>
     </>

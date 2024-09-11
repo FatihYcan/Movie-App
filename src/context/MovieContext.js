@@ -10,19 +10,24 @@ export const useMovieContext = () => {
 const MovieContextProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const getMovies = (url) => {
+  const getMovies = (url, limit = 12) => {
     setLoading(true);
     axios
       .get(url)
       .then((res) => {
-        setMovies(res.data.results.slice(0, 12));
+        setMovies(res.data.results.slice(0, limit, page));
+        setTotalPages(res.data.total_pages);
       })
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   };
   return (
-    <MovieContext.Provider value={{ movies, loading, getMovies }}>
+    <MovieContext.Provider
+      value={{ movies, loading, getMovies, page, setPage, totalPages }}
+    >
       {children}
     </MovieContext.Provider>
   );

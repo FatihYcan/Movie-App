@@ -44,12 +44,10 @@ const Navbar = () => {
                     id="collapsible-nav-dropdown"
                     className="mr-2"
                   >
-                    <NavDropdown.Item href="#action/3.2">
+                    <NavDropdown.Item href="/movie/now-playing">
                       Now Playing
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                      Popular
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/movie">Popular</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.3">
                       Top Rated
                     </NavDropdown.Item>
@@ -188,12 +186,14 @@ const Navbar = () => {
         <DisclosurePanel className="md:hidden">
           <div className="space-y-1 px-4 pb-3 pt-2 sm:px-3">
             <NavDropdown
-              title="Fimler"
+              title="Movies"
               id="collapsible-nav-dropdown"
               className="mb-3"
             >
-              <NavDropdown.Item href="#action/3.2">Popüler</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Yakında</NavDropdown.Item>
+              <NavDropdown.Item href="/movie/now-playing">
+                Now Playing
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/movie">Popüler</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Gösterimde</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">
                 En Çok Oy Alan

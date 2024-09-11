@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@headlessui/react": "^2.1.5",
     "@heroicons/react": "^2.1.5",
+    "@mui/material": "^6.0.2",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "firebase": "^10.13.1",

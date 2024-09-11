@@ -39,9 +39,6 @@ const Main = () => {
     getTv(TV_API);
   }, []);
 
-  console.log(movies);
-  console.log(tv);
-
   return (
     <Container className="p-1">
       <form className="flex justify-center p-2 mt-2" onSubmit={handleSubmit}>
