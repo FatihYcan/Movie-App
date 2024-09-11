@@ -6,18 +6,24 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 const Upcoming = () => {
-  const { movies, loading, getMovies, page, setPage, moviePages } =
-    useMovieContext();
+  const {
+    movies,
+    loading,
+    getMovies,
+    moviePage,
+    setMoviePage,
+    movieTotalPages,
+  } = useMovieContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const MOVIE_API = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${page}`;
+  const MOVIE_API = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&page=${moviePage}`;
 
   useEffect(() => {
     getMovies(MOVIE_API, 20);
-  }, [page]);
+  }, [moviePage]);
 
   const handlePage = (event, value) => {
-    setPage(value);
+    setMoviePage(value);
   };
 
   return (
@@ -47,8 +53,8 @@ const Upcoming = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={moviePages}
-                  page={page}
+                  count={movieTotalPages}
+                  page={moviePage}
                   onChange={handlePage}
                   color="success"
                 />

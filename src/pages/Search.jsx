@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 import { useMovieContext } from "../context/MovieContext";
 import { useTvContext } from "../context/TvContext";
+import MovieCard from "../components/MovieCard";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 const Search = () => {
   const { search } = useLocation();
@@ -12,16 +15,24 @@ const Search = () => {
   const [query, setQuery] = useState(initialQuery);
   const navigate = useNavigate();
 
-  const { movies, loading, getMovies, page, moviePages, movieResults } =
-    useMovieContext();
-  const { tv, getTv, tvPages, tvResults } = useTvContext();
+  const {
+    movies,
+    loading,
+    getMovies,
+    moviePage,
+    setMoviePage,
+    movieTotalPages,
+    movieResults,
+  } = useMovieContext();
+  const { tv, getTv, tvPage, setTvPage, tvTotalPages, tvResults } =
+    useTvContext();
 
   const [movieActive, setMovieActive] = useState(true);
   const [tvActive, setTvActive] = useState(false);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`;
-  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${query}&page=${page}`;
+  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}&page=${moviePage}`;
+  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${query}&page=${tvPage}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +44,8 @@ const Search = () => {
     if (movieSearch && tvSearch) {
       getMovies(SEARCH_MOVIE_API, 20);
       getTv(SEARCH_TV_API, 20);
+      setMovieActive(true);
+      setTvActive(false);
     } else {
       toastWarnNotify("Please enter a text");
     }
@@ -66,10 +79,9 @@ const Search = () => {
     getTv(SEARCH_TV_API, 20);
   };
 
-  // console.log("tv", tv);
-  // console.log("movie pages", moviePages);
-  // console.log("tvPages", tvPages);
-  // console.log("movieResults", movieResults);
+  const handlePage = (event, value) => {
+    setMoviePage(value);
+  };
 
   return (
     <Container className="p-1">
@@ -85,7 +97,7 @@ const Search = () => {
           Search
         </button>
       </form>
-      <div className=" rounded-2xl border-solid border-2 border-black flex w-11/12 md:w-2/4 m-auto justify-between">
+      <div className=" rounded-2xl border-solid border-2 border-black flex w-11/12 md:w-2/4 m-auto justify-between mb-3">
         <div
           className={
             movieActive
@@ -107,6 +119,30 @@ const Search = () => {
           <span>{tvResults}</span>
         </div>
       </div>
+
+      <Row
+        xs={2}
+        sm={3}
+        md={4}
+        lg={5}
+        className="g-4 mb-4 justify-content-center"
+      >
+        {movieActive && (
+          <>
+            <MovieCard movies={movies} />
+            <div className="mb-3 flex justify-center">
+              <Stack>
+                <Pagination
+                  count={movieTotalPages}
+                  page={moviePage}
+                  onChange={handlePage}
+                  color="success"
+                />
+              </Stack>
+            </div>
+          </>
+        )}
+      </Row>
     </Container>
   );
 };

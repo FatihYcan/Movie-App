@@ -6,17 +6,18 @@ import { useTvContext } from "../context/TvContext";
 import TvCard from "../components/TvCard";
 
 const PopularTv = () => {
-  const { tv, loading, getTv, page, setPage, tvPages } = useTvContext();
+  const { tv, loading, getTv, tvPage, setTvPage, tvTotalPages } =
+    useTvContext();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const TV_API = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&page=${page}`;
+  const TV_API = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&page=${tvPage}`;
 
   useEffect(() => {
     getTv(TV_API, 20);
-  }, [page]);
+  }, [tvPage]);
 
   const handlePage = (event, value) => {
-    setPage(value);
+    setTvPage(value);
   };
 
   return (
@@ -32,7 +33,7 @@ const PopularTv = () => {
         <>
           <>
             <h1 className="md:text-2xl font-semibold dark:text-white px-2 my-2">
-            Popular Tv Shows
+              Popular Tv Shows
             </h1>
             <Row
               xs={2}
@@ -46,8 +47,8 @@ const PopularTv = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={tvPages}
-                  page={page}
+                  count={tvTotalPages}
+                  page={tvPage}
                   onChange={handlePage}
                   color="success"
                 />

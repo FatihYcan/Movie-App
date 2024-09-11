@@ -7,35 +7,36 @@ import TvCard from "../components/TvCard";
 import { useTvContext } from "../context/TvContext";
 
 const TrendingTv = () => {
-  const { tv, loading, getTv, page, setPage, tvPages } = useTvContext();
+  const { tv, loading, getTv, tvPage, setTvPage, tvTotalPages } =
+    useTvContext();
 
   const [dayActive, setDayActive] = useState(true);
   const [weekActive, setWeekActive] = useState(false);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const DAY_API = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&page=${page}`;
-  const WEEK_API = `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}&page=${page}`;
+  const DAY_API = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&page=${tvPage}`;
+  const WEEK_API = `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}&page=${tvPage}`;
 
   useEffect(() => {
     getTv(DAY_API, 20);
-  }, [page]);
+  }, [tvPage]);
 
   const handlePage = (event, value) => {
-    setPage(value);
+    setTvPage(value);
   };
 
   const handleWeekClick = () => {
     setWeekActive(true);
     setDayActive(false);
     getTv(WEEK_API, 20);
-    setPage(1);
+    setTvPage(1);
   };
 
   const handleDayClick = () => {
     setWeekActive(false);
     setDayActive(true);
     getTv(DAY_API, 20);
-    setPage(1);
+    setTvPage(1);
   };
 
   return (
@@ -95,8 +96,8 @@ const TrendingTv = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={tvPages}
-                  page={page}
+                  count={tvTotalPages}
+                  page={tvPage}
                   onChange={handlePage}
                   color="success"
                 />

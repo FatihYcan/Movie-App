@@ -8,16 +8,16 @@ import { useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
 const Main = () => {
-  const { movies, loading, getMovies, page } = useMovieContext();
-  const { tv, getTv } = useTvContext();
+  const { movies, loading, getMovies, moviePage } = useMovieContext();
+  const { tv, getTv, tvPage } = useTvContext();
   const navigate = useNavigate();
   const inputRef = useRef();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const MOVIE_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_count.desc`;
   const TV_API = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&sort_by=vote_count.desc`;
-  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${inputRef}&page=${page}`;
-  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${inputRef}&page=${page}`;
+  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${inputRef}&page=${moviePage}`;
+  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${inputRef}&page=${tvPage}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();

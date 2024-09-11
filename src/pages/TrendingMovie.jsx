@@ -7,36 +7,42 @@ import Stack from "@mui/material/Stack";
 import { Outlet } from "react-router-dom";
 
 const TrendingMovie = () => {
-  const { movies, loading, getMovies, page, setPage, moviePages } =
-    useMovieContext();
+  const {
+    movies,
+    loading,
+    getMovies,
+    moviePage,
+    setMoviePage,
+    movieTotalPages,
+  } = useMovieContext();
 
   const [dayActive, setDayActive] = useState(true);
   const [weekActive, setWeekActive] = useState(false);
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const DAY_API = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${page}`;
-  const WEEK_API = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`;
+  const DAY_API = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${moviePage}`;
+  const WEEK_API = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${moviePage}`;
 
   useEffect(() => {
     getMovies(DAY_API, 20);
-  }, [page]);
+  }, [moviePage]);
 
   const handlePage = (event, value) => {
-    setPage(value);
+    setMoviePage(value);
   };
 
   const handleWeekClick = () => {
     setWeekActive(true);
     setDayActive(false);
     getMovies(WEEK_API, 20);
-    setPage(1);
+    setMoviePage(1);
   };
 
   const handleDayClick = () => {
     setWeekActive(false);
     setDayActive(true);
     getMovies(DAY_API, 20);
-    setPage(1);
+    setMoviePage(1);
   };
 
   return (
@@ -56,14 +62,14 @@ const TrendingMovie = () => {
                 Trending Movies
               </h1>
 
-              <div className=" rounded-full border-solid border-2 border-black ">
+              <div className="rounded-full border-solid border-2 border-black dark:bg-[#004366]">
                 <Button
+                  variant="link"
                   size="sm"
-                  variant="outline-primary"
                   className={
                     dayActive
-                      ? "rounded-full px-3 bg-black text-white border-none"
-                      : "border-none text-black hover:bg-white px-3 rounded-full bg-white"
+                      ? "rounded-full px-3 bg-black text-white text-decoration-none font-semibold"
+                      : "text-decoration-none text-black px-3 rounded-full font-semibold dark:text-white"
                   }
                   onClick={handleDayClick}
                 >
@@ -71,12 +77,12 @@ const TrendingMovie = () => {
                 </Button>
 
                 <Button
+                  variant="link"
                   size="sm"
-                  variant="outline-primary"
                   className={
                     weekActive
-                      ? "rounded-full px-3 bg-black text-white border-none"
-                      : "border-none text-black hover:bg-white px-3 rounded-full bg-white"
+                      ? "rounded-full px-3 bg-black text-white text-decoration-none font-semibold"
+                      : "text-decoration-none text-black px-3 rounded-full font-semibold dark:text-white"
                   }
                   onClick={handleWeekClick}
                 >
@@ -96,8 +102,8 @@ const TrendingMovie = () => {
             <div className="mb-3 flex justify-center">
               <Stack>
                 <Pagination
-                  count={moviePages}
-                  page={page}
+                  count={movieTotalPages}
+                  page={moviePage}
                   onChange={handlePage}
                   color="success"
                 />
