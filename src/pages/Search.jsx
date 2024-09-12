@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 import { useMovieContext } from "../context/MovieContext";
 import { useTvContext } from "../context/TvContext";
-import MovieCard from "../components/MovieCard";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import TvCard from "../components/TvCard";
+import SearchTvCard from "../components/SearchTvCard";
+import SearchMovieCard from "../components/SearchMovieCard";
 
 const Search = () => {
   const { search } = useLocation();
@@ -18,7 +18,6 @@ const Search = () => {
 
   const {
     movies,
-    loading,
     getMovies,
     moviePage,
     setMoviePage,
@@ -106,12 +105,12 @@ const Search = () => {
           Search
         </button>
       </form>
-      <div className=" rounded-2xl border-solid border-2 border-black flex w-11/12 md:w-2/4 m-auto justify-between mb-3">
+      <div className="text-sm rounded-2xl border-solid border-2 border-black flex w-11/12 md:w-3/4 lg:w-2/4 m-auto justify-between mb-3">
         <div
           className={
             movieActive
-              ? " flex w-1/2 justify-center items-center gap-3 font-semibold md:text-xl py-2 bg-black text-white rounded-xl"
-              : "text-black px-3 rounded-full font-semibold dark:text-white flex w-1/2 justify-center items-center gap-3"
+              ? "  flex w-1/2 justify-center items-center gap-3 font-semibold md:text-xl py-2 bg-black text-white rounded-xl"
+              : "text-black px-3 md:text-xl rounded-full font-semibold dark:text-white flex w-1/2 justify-center items-center gap-3"
           }
         >
           <button onClick={handleMoiveClick}>Movies</button>
@@ -121,33 +120,36 @@ const Search = () => {
           className={
             tvActive
               ? " flex w-1/2 justify-center items-center gap-3 font-semibold md:text-xl py-2 bg-black text-white rounded-xl"
-              : "text-black px-3 rounded-full font-semibold dark:text-white flex w-1/2 justify-center items-center gap-3"
+              : "text-black md:px-3 gap-2 md:text-xl rounded-full font-semibold dark:text-white flex w-1/2 justify-center items-center md:gap-3"
           }
         >
           <button onClick={handleTvClick}>Tv Shows</button>
           <span>{tvResults}</span>
         </div>
       </div>
-
-      <Row
-        xs={2}
-        sm={3}
-        md={4}
-        lg={5}
-        className="g-4 mb-4 justify-content-center"
-      >
-        {movieActive && <MovieCard movies={movies} />}
-        {tvActive && <TvCard tv={tv} />}
-      </Row>
+      {movieActive && <SearchMovieCard movies={movies} />}
+      {tvActive && <SearchTvCard tv={tv} />}
       <div className="mb-3 flex justify-center">
-        <Stack>
-          <Pagination
-            count={movieActive ? movieTotalPages : tvTotalPages}
-            page={movieActive ? moviePage : tvPage}
-            onChange={handlePage}
-            color="success"
-          />
-        </Stack>
+        {movieActive && movieTotalPages > 1 && (
+          <Stack>
+            <Pagination
+              count={movieTotalPages}
+              page={moviePage}
+              onChange={handlePage}
+              color="success"
+            />
+          </Stack>
+        )}
+        {tvActive && tvTotalPages > 1 && (
+          <Stack>
+            <Pagination
+              count={tvTotalPages}
+              page={tvPage}
+              onChange={handlePage}
+              color="success"
+            />
+          </Stack>
+        )}
       </div>
     </Container>
   );

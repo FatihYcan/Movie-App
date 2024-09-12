@@ -39,7 +39,7 @@ const MovieDetail = () => {
 
   return (
     <Container className="py-5">
-      <div className="flex flex-col md:flex-row max-w-6xl rounded-lg bg-gray-100 dark:bg-gray-dark-second shadow-lg">
+      <div className="flex flex-col md:flex-row max-w-6xl rounded-lg bg-[#032541] shadow-lg">
         <Card.Img
           variant="top"
           src={poster_path ? baseImageUrl + poster_path : defaultImage}
@@ -49,14 +49,14 @@ const MovieDetail = () => {
         <div className="p-6 flex flex-col justify-between md:w-2/3">
           {videoKey && <VideoSection videoKey={videoKey} />}
           <div>
-            <h1 className="text-gray-900 dark:text-gray-50 xs:text-xl md:text-2xl font-medium mb-2">
+            <h1 className="text-gray-50 xs:text-xl md:text-2xl font-medium mb-2">
               {title}
             </h1>
-            <p className="text-gray-700 dark:text-gray-300 text-base mb-4">
+            <p className="text-gray-300 text-base mb-4">
               {overview}
             </p>
           </div>
-          <ul className="rounded-lg border border-gray-400 text-gray-900 dark:text-gray-300  ">
+          <ul className="rounded-lg border border-gray-400 text-gray-300  ">
             <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg">
               {"Release Date : " + release_date}
             </li>
