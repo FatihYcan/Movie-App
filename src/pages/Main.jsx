@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
 const Main = () => {
-  const { movies, loading, getMovies, moviePage } = useMovieContext();
+  const { movies, getMovies, moviePage } = useMovieContext();
   const { tv, getTv, tvPage } = useTvContext();
   const navigate = useNavigate();
   const inputRef = useRef();
@@ -53,47 +53,36 @@ const Main = () => {
         </button>
       </form>
 
-      {loading ? (
-        <div
-          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-600 mt-52"
-          role="status"
+      <>
+        <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
+          Movies
+        </h1>
+        <Row
+          xs={2}
+          sm={3}
+          md={4}
+          lg={5}
+          xl={6}
+          className="g-4 mb-4 justify-content-center"
         >
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : (
-        <>
-          <>
-            <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
-              Movies
-            </h1>
-            <Row
-              xs={2}
-              sm={3}
-              md={4}
-              lg={5}
-              xl={6}
-              className="g-4 mb-4 justify-content-center"
-            >
-              <MovieCard movies={movies} />
-            </Row>
-          </>
-          <>
-            <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
-              TV Shows
-            </h1>
-            <Row
-              xs={2}
-              sm={3}
-              md={4}
-              lg={5}
-              xl={6}
-              className="g-4 mb-4 justify-content-center"
-            >
-              <TvCard tv={tv} />
-            </Row>
-          </>
-        </>
-      )}
+          <MovieCard movies={movies} />
+        </Row>
+      </>
+      <>
+        <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
+          TV Shows
+        </h1>
+        <Row
+          xs={2}
+          sm={3}
+          md={4}
+          lg={5}
+          xl={6}
+          className="g-4 mb-4 justify-content-center"
+        >
+          <TvCard tv={tv} />
+        </Row>
+      </>
     </Container>
   );
 };

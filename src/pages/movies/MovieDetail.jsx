@@ -1,45 +1,41 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import VideoSection from "../components/VideoSection";
+import VideoSection from "../../components/VideoSection";
 import { Card, Container } from "react-bootstrap";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [TvDetail, setTvDetail] = useState("");
+  const [movieDetail, setMovieDetail] = useState("");
   const [videoKey, setVideoKey] = useState();
 
   const {
-    name,
+    title,
     poster_path,
     overview,
     vote_average,
-    first_air_date,
+    release_date,
     vote_count,
     popularity,
-  } = TvDetail;
+  } = movieDetail;
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
-  const tvDetailBaseUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`;
+  const movieDetailBaseUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
   const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
   const defaultImage =
     "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
-  const videoUrl = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=${API_KEY}`;
+  const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
 
   useEffect(() => {
     axios
-      .get(tvDetailBaseUrl)
-      .then((res) => setTvDetail(res.data))
+      .get(movieDetailBaseUrl)
+      .then((res) => setMovieDetail(res.data))
       .catch((err) => console.log(err));
     axios
       .get(videoUrl)
-      .then((res) => {
-        if (res.data.results.length > 0) {
-          setVideoKey(res.data.results[0].key);
-        }
-      })
+      .then((res) => setVideoKey(res.data.results[0].key))
       .catch((err) => console.log(err));
-  }, [tvDetailBaseUrl, videoUrl]);
+  }, [movieDetailBaseUrl, videoUrl]);
 
   return (
     <Container className="py-5">
@@ -47,14 +43,14 @@ const MovieDetail = () => {
         <Card.Img
           variant="top"
           src={poster_path ? baseImageUrl + poster_path : defaultImage}
-          alt={name}
+          alt={title}
           className="md:w-1/3"
         />
         <div className="p-6 flex flex-col justify-between md:w-2/3">
           {videoKey && <VideoSection videoKey={videoKey} />}
           <div>
             <h1 className="text-gray-900 dark:text-gray-50 xs:text-xl md:text-2xl font-medium mb-2">
-              {name}
+              {title}
             </h1>
             <p className="text-gray-700 dark:text-gray-300 text-base mb-4">
               {overview}
@@ -62,7 +58,7 @@ const MovieDetail = () => {
           </div>
           <ul className="rounded-lg border border-gray-400 text-gray-900 dark:text-gray-300  ">
             <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg">
-              {"Release Date : " + first_air_date}
+              {"Release Date : " + release_date}
             </li>
             <li className="px-6 py-2 border-b border-gray-400 w-full">
               {"Rate : " + vote_average}

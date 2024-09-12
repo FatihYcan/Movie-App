@@ -7,6 +7,7 @@ import { useTvContext } from "../context/TvContext";
 import MovieCard from "../components/MovieCard";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import TvCard from "../components/TvCard";
 
 const Search = () => {
   const { search } = useLocation();
@@ -55,7 +56,7 @@ const Search = () => {
       getMovies(SEARCH_MOVIE_API, 20);
       getTv(SEARCH_TV_API, 20);
     }
-  }, []);
+  }, [moviePage, tvPage]);
 
   const handleMoiveClick = () => {
     setMovieActive(true);
@@ -66,6 +67,8 @@ const Search = () => {
       `/search/movie?query=${encodeURIComponent(query)}`
     );
     getMovies(SEARCH_MOVIE_API, 20);
+    setMoviePage(1);
+    setTvPage(1);
   };
 
   const handleTvClick = () => {
@@ -77,10 +80,16 @@ const Search = () => {
       `/search/tv?query=${encodeURIComponent(query)}`
     );
     getTv(SEARCH_TV_API, 20);
+    setMoviePage(1);
+    setTvPage(1);
   };
 
   const handlePage = (event, value) => {
-    setMoviePage(value);
+    if (movieActive) {
+      setMoviePage(value);
+    } else {
+      setTvPage(value);
+    }
   };
 
   return (
@@ -127,22 +136,19 @@ const Search = () => {
         lg={5}
         className="g-4 mb-4 justify-content-center"
       >
-        {movieActive && (
-          <>
-            <MovieCard movies={movies} />
-            <div className="mb-3 flex justify-center">
-              <Stack>
-                <Pagination
-                  count={movieTotalPages}
-                  page={moviePage}
-                  onChange={handlePage}
-                  color="success"
-                />
-              </Stack>
-            </div>
-          </>
-        )}
+        {movieActive && <MovieCard movies={movies} />}
+        {tvActive && <TvCard tv={tv} />}
       </Row>
+      <div className="mb-3 flex justify-center">
+        <Stack>
+          <Pagination
+            count={movieActive ? movieTotalPages : tvTotalPages}
+            page={movieActive ? moviePage : tvPage}
+            onChange={handlePage}
+            color="success"
+          />
+        </Stack>
+      </div>
     </Container>
   );
 };
