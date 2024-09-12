@@ -26,6 +26,13 @@
   .form-container form {
     @apply absolute inset-[2px] rounded-[8px] bg-gray-100 dark:bg-[#032541] z-[10] flex flex-col py-[30px] px-[40px];
   }
+
+  .active {
+    @apply rounded-full px-3 no-underline font-semibold;
+  }
+  .searchactive {
+    @apply flex w-1/2 justify-center items-center gap-3 font-semibold md:text-xl;
+  }
 }
 
 * {
@@ -39,17 +46,6 @@ body {
 
 /* MovieCard Custom CSS */
 .movie-card {
-  /* background-color: #080f36;
-  border-radius: 3px;
-  box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
-  overflow: hidden;
-  margin: 1rem;
-  width: 300px;
-  height: 510px;
-  width: 235px;
-  height: 340px;
-  position: relative;
-  cursor: pointer; */
   position: relative;
   cursor: pointer;
   box-shadow: 4px 4px 5px rgba(63, 60, 60, 0.5);
@@ -67,7 +63,6 @@ body {
 }
 
 .movie img {
-  /* object-fit: cover; */
   height: 275px;
   width: 100%;
 }

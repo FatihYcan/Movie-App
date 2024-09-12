@@ -22,7 +22,7 @@ const SearchMovieCard = ({ movies }) => {
         return (
           <div
             key={id}
-            className="flex flex-row mb-4 max-w-5xl text-xs md:text-base h-32 md:h-44 xl:h-56 m-auto rounded-lg bg-[#032541] "
+            className="flex flex-row mb-4 max-w-5xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl text-xs md:text-base h-32 md:h-44 xl:h-56 m-auto rounded-lg bg-[#032541] "
           >
             <Card.Img
               variant="top"

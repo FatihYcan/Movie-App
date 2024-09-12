@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { useMovieContext } from "../context/MovieContext";
 import MovieCard from "../components/MovieCard";
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row, Spinner } from "react-bootstrap";
 import { useTvContext } from "../context/TvContext";
 import TvCard from "../components/TvCard";
 import { useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
 const Main = () => {
-  const { movies, getMovies, moviePage } = useMovieContext();
+  const { movies, getMovies, moviePage, loading } = useMovieContext();
   const { tv, getTv, tvPage } = useTvContext();
   const navigate = useNavigate();
   const inputRef = useRef();
@@ -53,36 +53,50 @@ const Main = () => {
         </button>
       </form>
 
-      <>
-        <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
-          Movies
-        </h1>
-        <Row
-          xs={2}
-          sm={3}
-          md={4}
-          lg={5}
-          xl={6}
-          className="g-4 mb-4 justify-content-center"
-        >
-          <MovieCard movies={movies} />
-        </Row>
-      </>
-      <>
-        <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
-          TV Shows
-        </h1>
-        <Row
-          xs={2}
-          sm={3}
-          md={4}
-          lg={5}
-          xl={6}
-          className="g-4 mb-4 justify-content-center"
-        >
-          <TvCard tv={tv} />
-        </Row>
-      </>
+      {loading ? (
+        <div className="text-center">
+          <Button variant="primary" disabled>
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            Loading...
+          </Button>
+        </div>
+      ) : (
+        <>
+          <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
+            Movies
+          </h1>
+          <Row
+            xs={2}
+            sm={3}
+            md={4}
+            lg={5}
+            xl={6}
+            className="g-4 mb-4 justify-content-center"
+          >
+            <MovieCard movies={movies} />
+          </Row>
+
+          <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
+            TV Shows
+          </h1>
+          <Row
+            xs={2}
+            sm={3}
+            md={4}
+            lg={5}
+            xl={6}
+            className="g-4 mb-4 justify-content-center"
+          >
+            <TvCard tv={tv} />
+          </Row>
+        </>
+      )}
     </Container>
   );
 };

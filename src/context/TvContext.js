@@ -12,8 +12,10 @@ const TvContextProvider = ({ children }) => {
   const [tvPage, setTvPage] = useState(1);
   const [tvTotalPages, setTvTotalPages] = useState(1);
   const [tvResults, setTvResults] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const getTv = (url, limit = 12) => {
+    setLoading(true);
     axios
       .get(url)
       .then((res) => {
@@ -21,7 +23,8 @@ const TvContextProvider = ({ children }) => {
         setTvTotalPages(res.data.total_pages);
         setTvResults(res.data.total_results);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   };
   return (
     <TvContext.Provider
@@ -33,6 +36,7 @@ const TvContextProvider = ({ children }) => {
         tvTotalPages,
         tvResults,
         setTvResults,
+        loading,
       }}
     >
       {children}

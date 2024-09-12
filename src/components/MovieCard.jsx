@@ -54,39 +54,6 @@ const MovieCard = ({ movies }) => {
         );
       })}
     </>
-
-    // <div
-    //   className="movie-card"
-    //   id="container"
-    //   onClick={() => navigate("/details/" + id)}
-    // >
-    //   <div className="movie">
-    //     <img
-    //       loading="lazy"
-    //       src={poster_path ? IMG_API + poster_path : defaultImage}
-    //       alt="movie-card"
-
-    //     />
-    //     <div className="movie-over">
-    //       <p className=" line-clamp-3">{overview}</p>
-    //     </div>
-    //   </div>
-
-    //   <div
-    //     className={
-    //       currentUser
-    //         ? "movie-footer justify-between gap-1 px-2"
-    //         : "movie-footer justify-center"
-    //     }
-    //   >
-    //     <h5>{title}</h5>
-    //     {currentUser && (
-    //       <span className={`tag ${getVoteClass(vote_average)}`}>
-    //         {vote_average.toFixed(1)}
-    //       </span>
-    //     )}
-    //   </div>
-    // </div>
   );
 };
 

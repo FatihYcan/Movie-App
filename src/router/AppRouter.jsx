@@ -36,6 +36,8 @@ const AppRouter = () => {
           <Route path="/tv/:id" element={<TvDetail />} />
         </Route>
         <Route path="/search" element={<Search />} />
+        <Route path="/search/movie" element={<Search />} />
+        <Route path="/search/tv" element={<Search />} />
         <Route path="/movie" element={<PopularMovie />} />
         <Route path="/movie/now-playing" element={<NowPlaying />} />
         <Route path="/movie/top-rated" element={<TopRatedMovie />} />
