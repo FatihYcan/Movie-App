@@ -126,9 +126,7 @@ const Search = () => {
                   : "searchactive text-black px-3 rounded-full dark:text-white "
               }
             >
-              <button onClick={handleMoiveClick} disabled={!query}>
-                Movies
-              </button>
+              <button onClick={handleMoiveClick}>Movies</button>
               <span
                 className={
                   movieActive
@@ -146,9 +144,7 @@ const Search = () => {
                   : "searchactive text-black px-3 rounded-full dark:text-white"
               }
             >
-              <button onClick={handleTvClick} disabled={!query}>
-                TV Shows
-              </button>
+              <button onClick={handleTvClick}>TV Shows</button>
               <span
                 className={
                   tvActive
@@ -162,13 +158,13 @@ const Search = () => {
           </div>
           {movieActive && <SearchMovieCard movies={movies} />}
           {movieActive && movieResults === 0 && (
-            <p className="text-center">
+            <p className="text-center dark:text-white">
               There are no movies that matched your query.
             </p>
           )}
           {tvActive && <SearchTvCard tv={tv} />}
           {tvActive && tvResults === 0 && (
-            <p className="text-center">
+            <p className="text-center dark:text-white">
               There are no TV shows that matched your query.
             </p>
           )}
