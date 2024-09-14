@@ -67,3 +67,8 @@ Bu proje, filmleri ve TV şovları hakkında bilgi sağlayan bir uygulamadır. B
 - React Context API
 - Switch
 - [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started)
+
+
+https://github.com/user-attachments/assets/2bc7e0b5-949c-489b-a1de-acc3b7a9e02e
+
+[Live](https://fy-movie-app.netlify.app/)
