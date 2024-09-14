@@ -10,7 +10,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 const AuthContext = createContext();
@@ -21,12 +21,13 @@ export const useAuthContext = () => {
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     userObserver();
   }, []);
 
-  const navigate = useNavigate();
   const createUser = async (email, password, displayName) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -44,7 +45,7 @@ const AuthContextProvider = ({ children }) => {
   const loginUser = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      navigate(location.state?.from || "/");
       toastSuccessNotify("Logged in successfully");
     } catch (error) {
       toastErrorNotify("Is invalid credential");
@@ -71,7 +72,7 @@ const AuthContextProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        navigate("/");
+        navigate(location.state?.from || "/");
         toastSuccessNotify("Logged in successfully");
       })
       .catch((error) => {
