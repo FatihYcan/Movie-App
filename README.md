@@ -31,6 +31,7 @@ This project is an application that provides information about its movies and TV
 - MUI (Material-UI)
 - React Context API
 - Switch
+- [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started)
 
 # Movie App
 
@@ -65,3 +66,4 @@ Bu proje, filmleri ve TV şovları hakkında bilgi sağlayan bir uygulamadır. B
 - MUI (Material-UI)
 - React Context API
 - Switch
+- [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started)
