@@ -66,9 +66,7 @@ const Navbar = () => {
                     <NavDropdown.Item href="/tv/on-the-air">
                       On The Air
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="/tv">
-                      Popular
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/tv">Popular</NavDropdown.Item>
                     <NavDropdown.Item href="/tv/top-rated">
                       Top Rated
                     </NavDropdown.Item>
@@ -210,7 +208,9 @@ const Navbar = () => {
               <NavDropdown.Item href="/tv/airing-today">
                 Airing Today
               </NavDropdown.Item>
-              <NavDropdown.Item href="/tv/on-the-air">On The Air</NavDropdown.Item>
+              <NavDropdown.Item href="/tv/on-the-air">
+                On The Air
+              </NavDropdown.Item>
               <NavDropdown.Item href="/tv">Popular</NavDropdown.Item>
               <NavDropdown.Item href="/tv/top-rated">
                 Top Rated

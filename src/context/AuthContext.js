@@ -35,10 +35,10 @@ const AuthContextProvider = ({ children }) => {
         displayName: displayName,
       });
       userObserver(auth.currentUser);
-      navigate("/");
+      navigate(location.state?.from || "/");
       toastSuccessNotify("Registered successfully");
     } catch (error) {
-      toastErrorNotify("Email-already in use");
+      toastErrorNotify("Password should be at least 6 characters");
     }
   };
 
@@ -48,7 +48,7 @@ const AuthContextProvider = ({ children }) => {
       navigate(location.state?.from || "/");
       toastSuccessNotify("Logged in successfully");
     } catch (error) {
-      toastErrorNotify("Is invalid credential");
+      toastErrorNotify("There is no user with this email");
     }
   };
 
