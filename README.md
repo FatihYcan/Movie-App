@@ -1,207 +1,67 @@
 # Movie App
 
-Bu proje, React kullanarak geliştirilmiş bir film uygulamasıdır. Uygulama, kullanıcıların film bilgilerini görüntüleyebileceği, film araması yapabileceği ve çeşitli film kategorilerini keşfedebileceği bir arayüz sunar.
+This project is an application that provides information about its movies and TV shows. This application allows users to easily access detailed information about the world of movies and TV series. The application offers features such as user login and the ability to switch between themes.
+
+## Features
+
+- **Home**: Displays information about popular titles of movies and TV shows.
+- **Movie Listing:** You can view currently playing, popular, highest rated, upcoming and trending movies.
+- **Tv Show Listing** You can view the popular, highest rated and trending TV shows that will be broadcast today, currently on air.
+- **Movie and TV Show Search:** You can use the search function to search for a specific movie or TV show.
+- **Movie and TV Show Details:** When a movie or tv show is selected, you can view the movie details or tv shows and trailer.
+- **User Login and Registration:** User login and registration can be done using Firebase.
+- **User Profile Management**: Users can view their profile photos and names.
+- **Theme Switching**: Users can switch between dark and light modes of the app.
+
+## Technologies
+
+- HTML5
+- CSS3
+- javascript
+- React
+- Tailwind CSS
+- Firebase
+- Headless UI
+- Heroicons
+- React Bootstrap
+- React Router
+- Bootstrap
+- Axios
+- React Toastify
+- MUI (Material-UI)
+- React Context API
+- Switch
+
+# Movie App
+
+Bu proje, filmleri ve TV şovları hakkında bilgi sağlayan bir uygulamadır. Bu uygulama kullanıcıların film ve dizi dünyasına dair detaylı bilgiye kolayca ulaşmalarını sağlar. Uygulama, kullanıcı girişi ve temalar arasında geçiş yapabilme gibi özellikler sunar.
 
 ## Özellikler
 
-- **Film Listeleme:** Şu anda oynatılan, popüler, en yüksek puanlı ve yakında çıkacak filmleri görüntüleyebilirsiniz.
-- **Film Arama:** Belirli bir film aramak için arama işlevini kullanabilirsiniz.
-- **Film Detayları:** Bir film seçildiğinde, film detaylarını ve tanıtım videosunu görüntüleyebilirsiniz.
+- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
+- **Film Listeleme:** Şu anda oynatılan, popüler, en yüksek puanlı, yakında çıkacak ve trend olan filmleri görüntüleyebilirsiniz.
+- **Tv Şov Listeleme** Bugün yayınlanacak, şu anda yayında olan, popüler,en yüksek puanlı ve trend olan tv şovlarını görüntüleyebilirsiniz.
+- **Film ve Tv Şov Arama:** Belirli bir film veya tv şov aramak için arama işlevini kullanabilirsiniz.
+- **Film ve Tv Şov Detayları:** Bir film veya tv şov seçildiğinde, film detaylarını veya tv şovlarını ve tanıtım videosunu görüntüleyebilirsiniz.
 - **Kullanıcı Girişi ve Kayıt:** Firebase kullanarak kullanıcı girişi ve kayıt işlemleri yapılabilir.
-- **Karanlık Mod:** Kullanıcılar uygulamanın karanlık ve açık modları arasında geçiş yapabilirler.
-
-## Teknolojiler
-
-- **React:** Kullanıcı arayüzü için.
-- **Firebase:** Kimlik doğrulama için.
-- **React Router:** Sayfalar arasında geçiş yapmak için.
-- **Bootstrap:** Stil ve düzen için.
-- **Axios:** API istekleri yapmak için.
-- **React Toastify:** Bildirimler için.
-
--------------------------------------------------
-
-Bu proje, React kullanarak geliştirilmiş bir film uygulamasıdır. Uygulama, kullanıcıların film bilgilerini görüntüleyebileceği, film araması yapabileceği ve çeşitli film kategorilerini keşfedebileceği bir arayüz sunar.
-
-## Özellikler
-
-- **Film Listeleme:** Şu anda oynatılan, popüler, en yüksek puanlı ve yakında çıkacak filmleri görüntüleyebilirsiniz.
-- **Film Arama:** Belirli bir film aramak için arama işlevini kullanabilirsiniz.
-- **Film Detayları:** Bir film seçildiğinde, film detaylarını ve tanıtım videosunu görüntüleyebilirsiniz.
-- **Kullanıcı Girişi ve Kayıt:** Firebase kullanarak kullanıcı girişi ve kayıt işlemleri yapılabilir.
-- **Karanlık Mod:** Kullanıcılar uygulamanın karanlık ve açık modları arasında geçiş yapabilirler.
-
-## Teknolojiler
-
-- **React:** Kullanıcı arayüzü için.
-- **Firebase:** Kimlik doğrulama için.
-- **React Router:** Sayfalar arasında geçiş yapmak için.
-- **Bootstrap:** Stil ve düzen için.
-- **Axios:** API istekleri yapmak için.
-- **React Toastify:** Bildirimler için.
-- **MUI (Material-UI):** Sayfalama ve stil için.
-
--------------------------------------------------------------
-
-# Movie App
-
-Movie App, sinema ve TV şovları hakkında bilgi sağlayan bir uygulamadır. Bu uygulama kullanıcıların film ve dizi dünyasına dair detaylı bilgiye kolayca ulaşmalarını sağlar. Uygulama, kullanıcı girişi ve temalar arasında geçiş yapabilme gibi özellikler sunar.
-
-## Özellikler
-
-- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
-- **Film ve TV Şovları Menüsü**:
-  - Şu anda Oynatılanlar
-  - Popüler
-  - En Yüksek Puanlı
-  - Yaklaşan
-  - Trend
 - **Kullanıcı Profil Yönetimi**: Kullanıcılar, profil fotoğraflarını ve adlarını görebilirler.
 - **Tema Geçişi**: Kullanıcılar, uygulamanın karanlık ve aydınlık modları arasında geçiş yapabilirler.
 
 ## Teknolojiler
 
-Movie App, aşağıdaki teknolojileri kullanarak geliştirilmiştir:
-
-- **React**: Kullanıcı arayüzünü oluşturmak için kullanılan bir JavaScript kütüphanesi.
-- **Tailwind CSS**: Stil ve tasarım için kullanılan, düşük seviyeli CSS framework.
-- **Headless UI**: React bileşenleri için erişilebilir, tamamen stilize edilebilir UI bileşenleri sağlayan bir kütüphane.
-- **Heroicons**: SVG ikonları sağlayan bir kütüphane.
-- **React Bootstrap**: Bootstrap bileşenlerini React ile kullanmanızı sağlayan bir kütüphane.
-- **React Router**: Uygulama içi yönlendirme için kullanılan bir kütüphane.
-- **Firebase**: Kullanıcı kimlik doğrulama ve yönetimi için kullanılan bulut tabanlı bir hizmet.
-- **React Context API**: Global state yönetimi için kullanılan React'in yerleşik bir API'si.
-- **Switch**: Tema geçişi için kullanılan özel bir bileşen
-
-----------------------------------------------------------------
-
-# Movie App
-
-Movie App, sinema ve TV şovları hakkında bilgi sağlayan bir uygulamadır. Bu uygulama kullanıcıların film ve dizi dünyasına dair detaylı bilgiye kolayca ulaşmalarını sağlar. Uygulama, kullanıcı girişi ve temalar arasında geçiş yapabilme gibi özellikler sunar.
-
-## Özellikler
-
-- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
-- **Film ve TV Şovları Menüsü**:
-  - Şu anda Oynatılanlar
-  - Popüler
-  - En Yüksek Puanlı
-  - Yaklaşan
-  - Trend
-- **Kullanıcı Profil Yönetimi**: Kullanıcılar, profil fotoğraflarını ve adlarını görebilirler.
-- **Tema Geçişi**: Kullanıcılar, uygulamanın karanlık ve aydınlık modları arasında geçiş yapabilirler.
-
-## Teknolojiler
-
-Movie App, aşağıdaki teknolojileri kullanarak geliştirilmiştir:
-
-- **React**: Kullanıcı arayüzünü oluşturmak için kullanılan bir JavaScript kütüphanesi.
-- **Tailwind CSS**: Stil ve tasarım için kullanılan, düşük seviyeli CSS framework.
-- **Headless UI**: React bileşenleri için erişilebilir, tamamen stilize edilebilir UI bileşenleri sağlayan bir kütüphane.
-- **Heroicons**: SVG ikonları sağlayan bir kütüphane.
-- **React Bootstrap**: Bootstrap bileşenlerini React ile kullanmanızı sağlayan bir kütüphane.
-- **React Router**: Uygulama içi yönlendirme için kullanılan bir kütüphane.
-- **Firebase**: Kullanıcı kimlik doğrulama ve yönetimi için kullanılan bulut tabanlı bir hizmet.
-- **React Context API**: Global state yönetimi için kullanılan React'in yerleşik bir API'si.
-- **Switch**: Temalar arasında geçiş yapmayı sağlar.
-- **Material-UI**: Kullanıcı arayüzü bileşenleri için kullanılan bir kütüphane (özellikle Pagination bileşeni için).
-
------------------------------------------------------------------------
-
-# Movie App
-
-Movie App, sinema ve TV şovları hakkında bilgi sağlayan bir uygulamadır. Bu uygulama kullanıcıların film ve dizi dünyasına dair detaylı bilgiye kolayca ulaşmalarını sağlar. Uygulama, kullanıcı girişi ve temalar arasında geçiş yapabilme gibi özellikler sunar.
-
-## Özellikler
-
-- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
-- **Film ve TV Şovları Menüsü**:
-  - Şu anda Oynatılanlar
-  - Popüler
-  - En Yüksek Puanlı
-  - Yaklaşan
-  - Trend
-- **Kullanıcı Profil Yönetimi**: Kullanıcılar, profil fotoğraflarını ve adlarını görebilirler.
-- **Tema Geçişi**: Kullanıcılar, uygulamanın karanlık ve aydınlık modları arasında geçiş yapabilirler.
-
-## Teknolojiler
-
-Movie App, aşağıdaki teknolojileri kullanarak geliştirilmiştir:
-
-- **React**: Kullanıcı arayüzünü oluşturmak için kullanılan bir JavaScript kütüphanesi.
-- **Tailwind CSS**: Stil ve tasarım için kullanılan, düşük seviyeli CSS framework.
-- **Headless UI**: React bileşenleri için erişilebilir, tamamen stilize edilebilir UI bileşenleri sağlayan bir kütüphane.
-- **Heroicons**: SVG ikonları sağlayan bir kütüphane.
-- **React Bootstrap**: Bootstrap bileşenlerini React ile kullanmanızı sağlayan bir kütüphane.
-- **React Router**: Uygulama içi yönlendirme için kullanılan bir kütüphane.
-- **Firebase**: Kullanıcı kimlik doğrulama ve yönetimi için kullanılan bulut tabanlı bir hizmet.
-
--------------------------------------------
-
-# Movie App
-
-Movie App, sinema ve TV şovları hakkında bilgi sağlayan bir uygulamadır. Bu uygulama kullanıcıların film ve dizi dünyasına dair detaylı bilgiye kolayca ulaşmalarını sağlar. Uygulama, kullanıcı girişi ve temalar arasında geçiş yapabilme gibi özellikler sunar.
-
-## Özellikler
-
-- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
-- **Film ve TV Şovları Menüsü**:
-  - Şu anda Oynatılanlar
-  - Popüler
-  - En Yüksek Puanlı
-  - Yaklaşan
-  - Trend
-- **Kullanıcı Profil Yönetimi**: Kullanıcılar, profil fotoğraflarını ve adlarını görebilirler.
-- **Tema Geçişi**: Kullanıcılar, uygulamanın karanlık ve aydınlık modları arasında geçiş yapabilirler.
-
-## Teknolojiler
-
-Movie App, aşağıdaki teknolojileri kullanarak geliştirilmiştir:
-
-- **React**: Kullanıcı arayüzünü oluşturmak için kullanılan bir JavaScript kütüphanesi.
-- **Tailwind CSS**: Stil ve tasarım için kullanılan, düşük seviyeli CSS framework.
-- **Headless UI**: React bileşenleri için erişilebilir, tamamen stilize edilebilir UI bileşenleri sağlayan bir kütüphane.
-- **Heroicons**: SVG ikonları sağlayan bir kütüphane.
-- **React Bootstrap**: Bootstrap bileşenlerini React ile kullanmanızı sağlayan bir kütüphane.
-- **React Router**: Uygulama içi yönlendirme için kullanılan bir kütüphane.
-- **Firebase**: Kullanıcı kimlik doğrulama ve yönetimi için kullanılan bulut tabanlı bir hizmet.
-- **React Context API**: Global state yönetimi için kullanılan React'in yerleşik bir API'si.
-- **Switch**: Temalar arasında geçiş yapmayı sağlar.
-- **Material-UI**: Kullanıcı arayüzü bileşenleri için kullanılan bir kütüphane (özellikle Pagination bileşeni için).
-- **React Context API**: Global state yönetimi için kullanılan React'in yerleşik bir API'si.
-- **Switch**: Temalar arasında geçiş yapmayı sağlar.
-- **Material-UI**: Kullanıcı arayüzü bileşenleri için kullanılan bir kütüphane (özellikle Pagination bileşeni için).
-
-----------------------------------------
-
-# Movie App
-
-Movie App, sinema ve TV şovları hakkında bilgi sağlayan bir uygulamadır. Bu uygulama kullanıcıların film ve dizi dünyasına dair detaylı bilgiye kolayca ulaşmalarını sağlar. Uygulama, kullanıcı girişi ve temalar arasında geçiş yapabilme gibi özellikler sunar.
-
-## Özellikler
-
-- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
-- **Film ve TV Şovları Menüsü**:
-  - Şu anda Oynatılanlar
-  - Popüler
-  - En Yüksek Puanlı
-  - Yaklaşan
-  - Trend
-- **Kullanıcı Profil Yönetimi**: Kullanıcılar, profil fotoğraflarını ve adlarını görebilirler.
-- **Tema Geçişi**: Kullanıcılar, uygulamanın karanlık ve aydınlık modları arasında geçiş yapabilirler.
-
-## Teknolojiler
-
-Movie App, aşağıdaki teknolojileri kullanarak geliştirilmiştir:
-
-- **React**: Kullanıcı arayüzünü oluşturmak için kullanılan bir JavaScript kütüphanesi.
-- **Tailwind CSS**: Stil ve tasarım için kullanılan, düşük seviyeli CSS framework.
-- **Headless UI**: React bileşenleri için erişilebilir, tamamen stilize edilebilir UI bileşenleri sağlayan bir kütüphane.
-- **Heroicons**: SVG ikonları sağlayan bir kütüphane.
-- **React Bootstrap**: Bootstrap bileşenlerini React ile kullanmanızı sağlayan bir kütüphane.
-- **React Router**: Uygulama içi yönlendirme için kullanılan bir kütüphane.
-- **Firebase**: Kullanıcı kimlik doğrulama ve yönetimi için kullanılan bulut tabanlı bir hizmet.
-- **React Context API**: Global state yönetimi için kullanılan React'in yerleşik bir API'si.
-- **Switch**: Temalar arasında geçiş yapmayı sağlar.
-- **Material-UI**: Kullanıcı arayüzü bileşenleri için kullanılan bir kütüphane (özellikle Pagination bileşeni için).
-
+- HTML5
+- CSS3
+- Javascript
+- React
+- Tailwind CSS
+- Firebase
+- Headless UI
+- Heroicons
+- React Bootstrap
+- React Router
+- Bootstrap
+- Axios
+- React Toastify
+- MUI (Material-UI)
+- React Context API
+- Switch
