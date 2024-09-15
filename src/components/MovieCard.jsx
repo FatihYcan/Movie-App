@@ -5,7 +5,7 @@ const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
-const MovieCard = ({ movies }) => {
+const MovieCard = ({ movies, path }) => {
   const navigate = useNavigate();
 
   const getVoteClass = (vote) => {
@@ -26,7 +26,9 @@ const MovieCard = ({ movies }) => {
         return (
           <Col key={id}>
             <Card
-              onClick={() => navigate("/movie/" + id)}
+              onClick={() =>
+                navigate(`/movie/${id}`, { state: { from: path } })
+              }
               className="movie-card"
             >
               <div className="movie">

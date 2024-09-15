@@ -23,6 +23,11 @@ const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+  const fullUrl = window.navigation.activation.entry.url;
+  const url = new URL(fullUrl);
+  const pathname = url.pathname;
+  const search = url.search;
+  const path = pathname + search;
 
   useEffect(() => {
     userObserver();
@@ -35,7 +40,7 @@ const AuthContextProvider = ({ children }) => {
         displayName: displayName,
       });
       userObserver(auth.currentUser);
-      navigate(location.state?.from || "/");
+      navigate(path);
       toastSuccessNotify("Registered successfully");
     } catch (error) {
       toastErrorNotify("Password should be at least 6 characters");
@@ -45,7 +50,7 @@ const AuthContextProvider = ({ children }) => {
   const loginUser = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate(location.state?.from || "/");
+      navigate(location.state?.from || path);
       toastSuccessNotify("Logged in successfully");
     } catch (error) {
       toastErrorNotify("There is no user with this email");
@@ -72,7 +77,7 @@ const AuthContextProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        navigate(location.state?.from || "/");
+        navigate(location.state?.from || path);
         toastSuccessNotify("Logged in successfully");
       })
       .catch((error) => {

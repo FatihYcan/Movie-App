@@ -16,10 +16,11 @@ const TrendingMovie = () => {
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const DAY_API = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${moviePage}`;
   const WEEK_API = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${moviePage}`;
+  const path = window.location.pathname + window.location.search;
 
   useEffect(() => {
     getMovies(DAY_API, 20);
-    getMovies(DAY_API, 20);
+    getMovies(WEEK_API, 20);
     setLoading(false);
   }, [moviePage]);
 
@@ -96,7 +97,7 @@ const TrendingMovie = () => {
             lg={5}
             className="g-4 mb-4 justify-content-center"
           >
-            <MovieCard movies={movies} />
+            <MovieCard movies={movies} path={path} />
           </Row>
           <div className="mb-3 flex justify-center">
             {movieTotalPages > 1 && (

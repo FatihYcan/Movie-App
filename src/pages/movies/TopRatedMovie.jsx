@@ -17,6 +17,7 @@ const TopRatedMovie = () => {
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const MOVIE_API = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=${moviePage}`;
+  const path = window.location.pathname + window.location.search;
 
   useEffect(() => {
     getMovies(MOVIE_API, 20);
@@ -53,7 +54,7 @@ const TopRatedMovie = () => {
             lg={5}
             className="g-4 mb-4 justify-content-center"
           >
-            <MovieCard movies={movies} />
+            <MovieCard movies={movies} path={path} />
           </Row>
           <div className="mb-3 flex justify-center">
             {movieTotalPages > 1 && (

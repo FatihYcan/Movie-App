@@ -12,6 +12,7 @@ const TrendingTv = () => {
   const [weekActive, setWeekActive] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const path = window.location.pathname + window.location.search;
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const DAY_API = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&page=${tvPage}`;
   const WEEK_API = `https://api.themoviedb.org/3/trending/tv/week?api_key=${API_KEY}&page=${tvPage}`;
@@ -97,7 +98,7 @@ const TrendingTv = () => {
             lg={5}
             className="g-4 mb-4 justify-content-center"
           >
-            <TvCard tv={tv} />
+            <TvCard tv={tv} path={path} />
           </Row>
           <div className="mb-3 flex justify-center">
             {tvTotalPages > 1 && (

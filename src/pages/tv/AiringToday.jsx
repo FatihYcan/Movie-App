@@ -9,6 +9,7 @@ const AiringToday = () => {
   const { tv, getTv, tvPage, setTvPage, tvTotalPages, loading } =
     useTvContext();
 
+  const path = window.location.pathname + window.location.search;
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const TV_API = `https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&page=${tvPage}`;
 
@@ -47,7 +48,7 @@ const AiringToday = () => {
             lg={5}
             className="g-4 mb-4 justify-content-center"
           >
-            <TvCard tv={tv} />
+            <TvCard tv={tv} path={path} />
           </Row>
           <div className="mb-3 flex justify-center">
             {tvTotalPages > 1 && (

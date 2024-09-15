@@ -4,20 +4,17 @@ import MovieCard from "../components/MovieCard";
 import { Button, Container, Row, Spinner } from "react-bootstrap";
 import { useTvContext } from "../context/TvContext";
 import TvCard from "../components/TvCard";
-import { useNavigate } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 
 const Main = () => {
-  const { movies, getMovies, moviePage, loading } = useMovieContext();
-  const { tv, getTv, tvPage } = useTvContext();
-  const navigate = useNavigate();
+  const { movies, getMovies, loading } = useMovieContext();
+  const { tv, getTv } = useTvContext();
   const inputRef = useRef();
 
   const API_KEY = process.env.REACT_APP_TMDB_KEY;
   const MOVIE_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=vote_count.desc`;
   const TV_API = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&sort_by=vote_count.desc`;
-  const SEARCH_MOVIE_API = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${inputRef}&page=${moviePage}`;
-  const SEARCH_TV_API = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${inputRef}&page=${tvPage}`;
+  const path = window.location.pathname + window.location.search;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,9 +23,9 @@ const Main = () => {
     const tvSearch = inputRef.current.value;
     sessionStorage.setItem("tvsearch", tvSearch);
     if (movieSearch && tvSearch) {
-      navigate(`/search?query=${encodeURIComponent(inputRef.current.value)}`);
-      getMovies(SEARCH_MOVIE_API, 20);
-      getTv(SEARCH_TV_API, 20);
+      window.location.href = `/search?query=${encodeURIComponent(
+        inputRef.current.value
+      )}`;
     } else {
       toastWarnNotify("Please enter a text");
     }
@@ -79,7 +76,7 @@ const Main = () => {
             xl={6}
             className="g-4 mb-4 justify-content-center"
           >
-            <MovieCard movies={movies} />
+            <MovieCard movies={movies} path={path} />
           </Row>
 
           <h1 className="md:text-2xl font-semibold dark:text-white px-2 mb-2">
@@ -93,7 +90,7 @@ const Main = () => {
             xl={6}
             className="g-4 mb-4 justify-content-center"
           >
-            <TvCard tv={tv} />
+            <TvCard tv={tv} path={path} />
           </Row>
         </>
       )}

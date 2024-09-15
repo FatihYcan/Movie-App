@@ -53,6 +53,8 @@ const Search = () => {
   };
 
   useEffect(() => {
+    const queryParams = new URLSearchParams(search);
+    const query = queryParams.get("query");
     if (query) {
       getMovies(SEARCH_MOVIE_API, 20);
       getTv(SEARCH_TV_API, 20);
@@ -156,13 +158,13 @@ const Search = () => {
               </span>
             </div>
           </div>
-          {movieActive && <SearchMovieCard movies={movies} />}
+          {movieActive && <SearchMovieCard movies={movies} path={path} />}
           {movieActive && movieResults === 0 && (
             <p className="text-center dark:text-white">
               There are no movies that matched your query.
             </p>
           )}
-          {tvActive && <SearchTvCard tv={tv} />}
+          {tvActive && <SearchTvCard tv={tv} path={path} />}
           {tvActive && tvResults === 0 && (
             <p className="text-center dark:text-white">
               There are no TV shows that matched your query.

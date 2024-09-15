@@ -33,9 +33,12 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link className="md:text-2xl font-semibold" to="/">
+                <NavDropdown.Item
+                  className="md:text-2xl font-semibold cursor-pointer"
+                  href="/"
+                >
                   Movie App
-                </Link>
+                </NavDropdown.Item>
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
@@ -147,7 +150,6 @@ const Navbar = () => {
                         <MenuItem>
                           {({ active }) => (
                             <Link
-                              to="/"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
@@ -237,15 +239,15 @@ const Navbar = () => {
                   )}
                 </div>
               </div>
-              <button type="button" className="relative ml-auto">
+
+              <div className="relative ml-auto">
                 <Switch />
-              </button>
+              </div>
             </div>
             <div className="mt-3 space-y-1 px-2">
               <DisclosureButton className="block rounded-md px-3 py-2 text-base font-medium focus:outline-none">
                 {currentUser ? (
                   <Link
-                    to="/"
                     className="block text-sm dark:text-white"
                     onClick={logOut}
                   >

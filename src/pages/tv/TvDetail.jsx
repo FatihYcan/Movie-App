@@ -1,13 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import VideoSection from "../../components/VideoSection";
-import { Card, Container } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 
 const MovieDetail = () => {
   const { id } = useParams();
   const [TvDetail, setTvDetail] = useState("");
   const [videoKey, setVideoKey] = useState();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (!window.history.state.usr) {
+      navigate(-2);
+    } else {
+      navigate(-1);
+    }
+  };
 
   const {
     name,
@@ -56,9 +65,7 @@ const MovieDetail = () => {
             <h1 className="text-gray-50 xs:text-xl md:text-2xl font-medium mb-2">
               {name}
             </h1>
-            <p className="text-gray-300 text-base mb-4">
-              {overview}
-            </p>
+            <p className="text-gray-300 text-base mb-4">{overview}</p>
           </div>
           <ul className="rounded-lg border border-gray-400 text-gray-300  ">
             <li className="px-6 py-2 border-b border-gray-400 w-full rounded-t-lg">
@@ -73,13 +80,14 @@ const MovieDetail = () => {
             <li className="px-6 py-2 border-b border-gray-400 w-full">
               {"Popularity : " + popularity}
             </li>
-            <li className="px-6 py-2 border-gray-400 w-full rounded-t-lg">
-              <Link
-                to={-1}
-                className="text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4"
+            <li className="px-[10px] border-gray-400 w-full rounded-t-lg">
+              <Button
+                variant="link"
+                onClick={handleClick}
+                className="no-underline"
               >
                 Go Back
-              </Link>
+              </Button>
             </li>
           </ul>
         </div>
