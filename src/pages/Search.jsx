@@ -28,8 +28,6 @@ const Search = () => {
 
   const path = window.location.pathname + window.location.search;
 
-  const navigate = useNavigate();
-
   const [movieActive, setMovieActive] = useState(false);
   const [tvActive, setTvActive] = useState(false);
 
@@ -39,14 +37,12 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search?query=${encodeURIComponent(query)}`);
     const movieSearch = query;
     sessionStorage.setItem("moviesearch", movieSearch);
     const tvSearch = query;
     sessionStorage.setItem("tvsearch", tvSearch);
     if (movieSearch && tvSearch) {
-      getMovies(SEARCH_MOVIE_API, 20);
-      getTv(SEARCH_TV_API, 20);
+      window.location.href = `/search?query=${encodeURIComponent(query)}`;
     } else {
       toastWarnNotify("Please enter a text");
     }
