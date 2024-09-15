@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Spinner } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { toastWarnNotify } from "../helper/ToastNotify";
 import { useMovieContext } from "../context/MovieContext";
 import { useTvContext } from "../context/TvContext";
