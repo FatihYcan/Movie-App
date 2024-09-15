@@ -40,7 +40,7 @@ const AuthContextProvider = ({ children }) => {
         displayName: displayName,
       });
       userObserver(auth.currentUser);
-      navigate(path);
+      navigate("/");
       toastSuccessNotify("Registered successfully");
     } catch (error) {
       toastErrorNotify("Password should be at least 6 characters");
