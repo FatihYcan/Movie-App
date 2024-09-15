@@ -80,12 +80,16 @@ const Search = () => {
   };
 
   const handlePage = (event, value) => {
-    if (movieActive) {
-      setMoviePage(value);
-    } else {
-      setTvPage(value);
+    if (query) {
+      if (movieActive) {
+        setMoviePage(value);
+      } else {
+        setTvPage(value);
+      }
     }
   };
+
+  console.log(query);
 
   return (
     <Container className="p-1">
