@@ -89,7 +89,6 @@ const Search = () => {
     }
   };
 
-  console.log(query);
 
   return (
     <Container className="p-1">
