@@ -4,7 +4,7 @@ This project is an application that provides information about its movies and TV
 
 ## Features
 
-- **Home**: Displays information about popular titles of movies and TV shows.
+- **Home**: You can view information about popular titles of movies and TV shows.
 - **Movie Listing:** You can view currently playing, popular, highest rated, upcoming and trending movies.
 - **Tv Show Listing** You can view the popular, highest rated and trending TV shows that will be broadcast today, currently on air.
 - **Movie and TV Show Search:** You can use the search function to search for a specific movie or TV show.
@@ -39,7 +39,7 @@ Bu proje, filmleri ve TV şovları hakkında bilgi sağlayan bir uygulamadır. B
 
 ## Özellikler
 
-- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüler.
+- **Ana Sayfa**: Film ve TV şovlarının popüler başlıklarıyla ilgili bilgileri görüntüleyebilirsiniz.
 - **Film Listeleme:** Şu anda oynatılan, popüler, en yüksek puanlı, yakında çıkacak ve trend olan filmleri görüntüleyebilirsiniz.
 - **Tv Şov Listeleme** Bugün yayınlanacak, şu anda yayında olan, popüler,en yüksek puanlı ve trend olan tv şovlarını görüntüleyebilirsiniz.
 - **Film ve Tv Şov Arama:** Belirli bir film veya tv şov aramak için arama işlevini kullanabilirsiniz.
