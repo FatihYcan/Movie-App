@@ -20,7 +20,6 @@ const TrendingMovie = () => {
 
   useEffect(() => {
     getMovies(DAY_API, 20);
-    getMovies(WEEK_API, 20);
     setLoading(false);
   }, [moviePage]);
 

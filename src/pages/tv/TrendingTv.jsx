@@ -19,7 +19,6 @@ const TrendingTv = () => {
 
   useEffect(() => {
     getTv(DAY_API, 20);
-    getTv(WEEK_API, 20);
     setLoading(false);
   }, [tvPage]);
 
